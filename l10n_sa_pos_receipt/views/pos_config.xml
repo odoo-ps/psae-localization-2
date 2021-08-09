@@ -1,0 +1,35 @@
+<odoo>
+    <data>
+        <record id="pos_config_view_form" model="ir.ui.view">
+            <field name="name">pos_config_view_form</field>
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='receipt']" position="inside">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="two_language_receipt"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="two_language_receipt"/>
+                            <div class="text-muted">
+                                Have a receipt in two languages
+                            </div>
+                            <div class="content-group mt16"
+                                 attrs="{'invisible' : [('two_language_receipt', '=', False)]}">
+                                <div>
+                                    <label string="First" for="first_language_id" class="col-lg-2 o_light_label"/>
+                                    <field name="first_language_id" attrs="{'required': [('two_language_receipt', '=', True)]}"/>
+                                </div>
+                                <div>
+                                    <label string="Second" for="second_language_id" class="col-lg-2 o_light_label"/>
+                                    <field name="second_language_id" attrs="{'required': [('two_language_receipt', '=', True)]}"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

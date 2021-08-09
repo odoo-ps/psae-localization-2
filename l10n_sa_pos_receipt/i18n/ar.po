@@ -1,0 +1,75 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* l10n_sa_pos_receipt
+#
+# Translators:
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "Invoice No"
+msgstr "رقم الفاتورة"
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "Printed by"
+msgstr "اسم البائع"
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "Cust Name"
+msgstr "اسم العميل"
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "Item Subtotal (Including VAT)"
+msgstr "المجموع (شامل ضريبة القيمة المضافة)"
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "Total Taxable Amount (Excluding VAT)"
+msgstr "الإجمالي الخاضع للضریبة (غیر شامل ضریبة القیمة المضافة)"
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "SA_Unit Price"
+msgstr "سعر الوحدة"
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "SA_Qty"
+msgstr "الكمية"
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "SA_Description"
+msgstr "الوصف"
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "Discount"
+msgstr "الخصم"
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "Total VAT"
+msgstr "مجموع ضریبة القیمة المضافة"
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "Total Amount Due"
+msgstr "إجمالي المبلغ المستحق"
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "Paid"
+msgstr "المدفوع"
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "SA_Change"
+msgstr "الباقي"
+
+#. module: l10n_sa_pos_receipt
+#: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
+msgid "Thank you for your visit"
+msgstr "شكرًا لزيارتكم لنا"

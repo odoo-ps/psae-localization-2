@@ -1,0 +1,295 @@
+<odoo>
+    <data>
+        <record id="sa_arabic_invoice" model="report.invoice.lang">
+            <field name="name">SA Arabic Invoice</field>
+        </record>
+        <record id="sa_arabic_invoice_posted_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,posted</field>
+            <field name="src">Tax Invoice</field>
+            <field name="value">فاتورة ضريبية</field>
+        </record>
+        <record id="sa_arabic_invoice_draft_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,draft</field>
+            <field name="src">Draft Tax Invoice</field>
+            <field name="value">مسودة فاتورة ضريبية</field>
+        </record>
+        <record id="sa_arabic_invoice_cancel_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,cancel</field>
+            <field name="src">Cancelled Tax Invoice</field>
+            <field name="value">فاتورة ضريبية ملغاة</field>
+        </record>
+        <record id="sa_arabic_invoice_out_refund_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,out_refund</field>
+            <field name="src">Credit Note</field>
+            <field name="value">إشعار خصم</field>
+        </record>
+        <record id="sa_arabic_invoice_in_refund_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,in_refund</field>
+            <field name="src">Vendor Credit Note</field>
+            <field name="value">إشعار خصم المورد</field>
+        </record>
+        <record id="sa_arabic_invoice_in_invoice_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,in_invoice</field>
+            <field name="src">Vendor Bill</field>
+            <field name="value">فاتورة المورد</field>
+        </record>
+        <record id="sa_arabic_invoice_invoice_date_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,invoice_date</field>
+            <field name="src">Invoice Date</field>
+            <field name="value">تاريخ الفاتورة</field>
+        </record>
+        <record id="sa_arabic_invoice_due_date_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,due_date</field>
+            <field name="src">Due Date</field>
+            <field name="value">تاريخ الاستحقاق</field>
+        </record>
+        <record id="sa_arabic_invoice_delivery_date_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,delivery_date</field>
+            <field name="src">Delivery Date</field>
+            <field name="value">تاريخ التوريد</field>
+        </record>
+        <record id="sa_arabic_invoice_source_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,source</field>
+            <field name="src">Source</field>
+            <field name="value">المصدر</field>
+        </record>
+        <record id="sa_arabic_invoice_customer_code_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,customer_code</field>
+            <field name="src">Customer Code</field>
+            <field name="value">كود العميل</field>
+        </record>
+        <record id="sa_arabic_invoice_reference_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,reference</field>
+            <field name="src">Reference</field>
+            <field name="value">رقم الإشارة</field>
+        </record>
+        <record id="sa_arabic_invoice_description_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,description</field>
+            <field name="src">Description</field>
+            <field name="value">الوصف</field>
+        </record>
+        <record id="sa_arabic_invoice_source_document_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,source_document</field>
+            <field name="src">Source Document</field>
+            <field name="value">المستند المصدر</field>
+        </record>
+        <record id="sa_arabic_invoice_quantity_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,quantity</field>
+            <field name="src">Quantity</field>
+            <field name="value">الكمية</field>
+        </record>
+        <record id="sa_arabic_invoice_unit_price_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,unit_price</field>
+            <field name="src">Unit Price</field>
+            <field name="value">سعر الوحدة</field>
+        </record>
+        <record id="sa_arabic_invoice_discount_percent_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,discount_percent</field>
+            <field name="src">Discount (%)</field>
+            <field name="value">الخصم (%)</field>
+        </record>
+        <record id="sa_arabic_invoice_taxes_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,taxes</field>
+            <field name="src">Total Vat</field>
+            <field name="value">مجموع ضريبة القيمة المضافة</field>
+        </record>
+        <record id="sa_arabic_invoice_amount_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,amount</field>
+            <field name="src">Taxable Amount</field>
+            <field name="value">المبلغ الخاضع للضريبة</field>
+        </record>
+        <record id="sa_arabic_invoice_price_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,price</field>
+            <field name="src">Price</field>
+            <field name="value">السعر</field>
+        </record>
+        <record id="sa_arabic_invoice_subtotal_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,subtotal</field>
+            <field name="src">Subtotal Subject to VAT</field>
+            <field name="value">المجموع الخاضع لضريبة القيمة المضافة</field>
+        </record>
+        <record id="sa_arabic_invoice_total_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,total</field>
+            <field name="src">Total</field>
+            <field name="value">الإجمالي</field>
+        </record>
+        <record id="sa_arabic_invoice_amount_due_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,amount_due</field>
+            <field name="src">Amount Due</field>
+            <field name="value">المبلغ المستحق</field>
+        </record>
+        <record id="sa_arabic_invoice_payment_reference_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,payment_reference</field>
+            <field name="src">Please use the following communication for your payment</field>
+            <field name="value">برجاء استخدام هذا المرجع عند السداد</field>
+        </record>
+        <record id="sa_arabic_invoice_total_price_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,total_price</field>
+            <field name="src">Total including VAT</field>
+            <field name="value">المجموع شامل ضريبة القيمة المضافة</field>
+        </record>
+        <record id="sa_arabic_invoice_tax_id_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,tax_id</field>
+            <field name="src">Tax ID</field>
+            <field name="value">معرف الضريبة</field>
+        </record>
+        <record id="sa_arabic_invoice_paid_on_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,paid_on</field>
+            <field name="src">Paid on</field>
+            <field name="value">دفعت في</field>
+        </record>
+        <record id="sa_arabic_invoice_amount_due_in_words_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,amount_due_in_words</field>
+            <field name="src">Amount Due in words</field>
+            <field name="value">المبلغ المستحق كتابةً</field>
+        </record>
+        <record id="sa_arabic_invoice_incoterm_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,incoterm</field>
+            <field name="src">Incoterm</field>
+            <field name="value">شرط تجاري</field>
+        </record>
+        <record id="sa_arabic_invoice_tax_amount_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa_invoice.sa_arabic_invoice')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">report.invoice.lang,tax_amount</field>
+            <field name="src">Tax Amount</field>
+            <field name="value">مبلغ الضريبة</field>
+        </record>
+        <record id="sa_riyal_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('base.SAR')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">res.currency,currency_unit_label</field>
+            <field name="src">Riyal</field>
+            <field name="value">ريال</field>
+        </record>
+        <record id="sa_halala_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('base.SAR')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">res.currency,currency_subunit_label</field>
+            <field name="src">Halala</field>
+            <field name="value">هللة</field>
+        </record>
+    </data>
+</odoo>

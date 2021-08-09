@@ -1,0 +1,41 @@
+<odoo>
+    <data>
+        <record id="res_config_settings_view_form" model="ir.ui.view">
+            <field name="name">Secondary Company Report Language Form</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@id='languages_setting']" position="after">
+                    <div class="col-xs-12 col-md-6 o_setting_box" id="languages_setting">
+                        <div class="o_setting_left_pane">
+                            <field name="secondary_language"/>
+                        </div>
+                        <div class="o_setting_right_pane" id="secondary_language_code">
+                            <span class="o_form_label">Dual Report Languages</span>
+                            <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."
+                                  aria-label="Values set here are company-specific."
+                                  role="img"/>
+                            <div class="text-muted">
+                                Choose primary language for the report
+                            </div>
+                            <div>
+                            <field  name="primary_language_code"  attrs="{'readonly':[('secondary_language','=',False)]}"  />
+                            </div>
+                            <div class="text-muted">
+                                Choose secondary language for the reports
+                            </div>
+                            <div>
+                            <field  name="secondary_language_code"  attrs="{'readonly':[('secondary_language','=',False)]}"  />
+                            </div>
+                            <span class="o_form_label">Secondary Report Translation</span>
+                            <div class="text-muted">
+                                Choose secondary language text for the reports
+                            </div>
+                            <field  name="invoice_text"  attrs="{'readonly':[('secondary_language','=',False)]}"  />
+                        </div>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

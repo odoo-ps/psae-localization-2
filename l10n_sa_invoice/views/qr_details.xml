@@ -1,0 +1,102 @@
+<odoo>
+    <data>
+        <template id="qr_details_external">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-set="lang"
+                       t-value="o.invoice_user_id.sudo().lang if o.move_type in ('in_invoice', 'in_refund') else o.partner_id.lang"/>
+                    <t t-call="l10n_sa_invoice.qr_details">
+                        <t t-set="o" t-value="o"/>
+                    </t>
+                </t>
+            </t>
+        </template>
+        <template id="qr_details">
+            <t t-call="l10n_sa_invoice.external_layout_standard">
+                <t t-set="no_qr" t-value="True"/>
+                <t t-if="not company">
+                    <!-- Multicompany -->
+                    <t t-if="company_id">
+                        <t t-set="company" t-value="company_id"/>
+                    </t>
+                    <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                        <t t-set="company" t-value="o.company_id.sudo()"/>
+                    </t>
+                    <t t-else="else">
+                        <t t-set="company" t-value="res_company"/>
+                    </t>
+                </t>
+                <t t-set="primary_lang" t-value="o.company_id.primary_language_code"/>
+                <t t-set="secondary_lang" t-value="o.company_id.secondary_language_code"/>
+                <t t-set="o_sec" t-value="o.with_context(lang=secondary_lang.code)"/>
+                <t t-set="o" t-value="o.with_context(lang=primary_lang.code)"/>
+                <t t-set="primary_text" t-value="o.company_id.invoice_text.with_context(lang=primary_lang.code)"/>
+                <t t-set="secondary_text"
+                   t-value="o_sec.company_id.invoice_text.with_context(lang=secondary_lang.code)"/>
+                <t t-set="primary_dir" t-value="primary_lang.direction"/>
+                <t t-set="secondary_dir" t-value="secondary_lang.direction"/>
+                <t t-set="infocol" t-value="('col-md-2' if report_type == 'html' else 'col-2')"/>
+                <t t-set="colclass" t-value="('col-md-6' if report_type == 'html' else 'col-6')"/>
+                <t t-set="address">
+                    <address t-field="o.partner_id"
+                             t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                    <div t-if="o.partner_id.vat" class="mt16">
+                        <t t-if="o.company_id.country_id.vat_label" t-esc="o.company_id.country_id.vat_label"
+                           id="inv_tax_id_label"/>
+                        <t t-else="">
+                            <t t-esc="primary_text.tax_id"/>
+                        </t>
+                        :
+                        <span t-field="o.partner_id.vat"/>
+                    </div>
+                </t>
+                <t t-set="sec_address">
+                    <address t-field="o_sec.partner_id"
+                             t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                    <div t-if="o_sec.partner_id.vat" class="mt16">
+                        <t t-if="o_sec.company_id.country_id.vat_label" t-esc="o_sec.company_id.country_id.vat_label"
+                           id="inv_tax_id_label"/>
+                        <t t-else="">
+                            <t t-esc="secondary_text.tax_id"/>
+                        </t>
+                        :
+                        <span t-field="o_sec.partner_id.vat"/>
+                    </div>
+                </t>
+                <div class="page">
+                    <table class="table table-sm o_main_table">
+                        <thead>
+                            <th>Field</th>
+                            <th>Value</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Time Stamp</td>
+                                <td><span t-field="o.write_date"/></td>
+                            </tr>
+                            <tr>
+                                <td>Total with VAT</td>
+                                <td><span t-field="o.amount_total"/></td>
+                            </tr>
+                            <tr>
+                                <td>VAT Total</td>
+                                <td><span t-esc="'%.2f %s' %(o.amount_total - o.amount_untaxed, o.currency_id.symbol)"/></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </template>
+        <record id="report_qr_details" model="ir.actions.report">
+            <field name="name">QR Details</field>
+            <field name="model">account.move</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">l10n_sa_invoice.qr_details_external</field>
+            <field name="report_file">l10n_sa_invoice.qr_details_external</field>
+            <field name="attachment">(object.state == 'posted') and ((object.name or 'INV').replace('/','_')+'.pdf')
+            </field>
+            <field name="binding_model_id" ref="model_account_move"/>
+            <field name="binding_type">report</field>
+        </record>
+    </data>
+</odoo>
