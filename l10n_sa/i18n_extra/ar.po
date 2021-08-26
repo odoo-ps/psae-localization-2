@@ -1233,8 +1233,17 @@ msgstr "المشتريات الخاضعة لنسبة %0"
 msgid "Exempt Purchases"
 msgstr "المشتريات المعفاة من الضريبة"
 
-
 #. module: l10n_sa
 #: model:res.country,vat_label:base.sa
 msgid "VAT Number"
 msgstr "رقم تسجيل ضريبة القيمة المضافة"
+
+#. module: l10n_sa
+#: model:res.currency,currency_unit_label:base.SAR
+msgid "Riyal"
+msgstr "ريال"
+
+#. module: l10n_sa
+#: model:res.currency,currency_subunit_label:base.SAR
+msgid "Halala"
+msgstr "هللة"

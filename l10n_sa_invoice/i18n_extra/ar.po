@@ -130,8 +130,8 @@ msgstr "المجموع شامل ضريبة القيمة المضافة"
 
 #. module: l10n_sa_invoice
 #: model:report.invoice.lang,tax_id:l10n_sa_invoice.sa_arabic_invoice
-msgid "VAT Number"
-msgstr "رقم تسجيل ضريبة القيمة المضافة"
+msgid "VAT ID"
+msgstr "معرف الضريبة"
 
 #. module: l10n_sa_invoice
 #: model:report.invoice.lang,paid_on:l10n_sa_invoice.sa_arabic_invoice
