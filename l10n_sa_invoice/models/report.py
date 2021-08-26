@@ -1,8 +1,11 @@
+# -*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo import fields, models
 
 
 class Report(models.Model):
     _name = "report.invoice.lang"
+    _description = "Translation for dual language invoices"
 
     name = fields.Char("Name")
     posted = fields.Char("Invoice", default="Invoice", translate=True)
@@ -31,7 +34,7 @@ class Report(models.Model):
     payment_reference = fields.Char("Payment Reference Line",
                                     default="Please use the following communication for your payment", translate=True)
     total_price = fields.Char('Total including VAT', default="Total including VAT", translate=True)
-    tax_id = fields.Char("Tax ID", default="Tax ID", translate=True)
+    tax_id = fields.Char("VAT ID", default="Tax ID", translate=True)
     paid_on = fields.Char("Paid on", default="Paid on", translate=True)
     amount_due_in_words = fields.Char("Amount Due in words", default="Amount Due in words", translate=True)
     incoterm = fields.Char("Incoterm", default="Incoterm", translate=True)

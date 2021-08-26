@@ -380,7 +380,7 @@
                     <div id="total" class="row">
                         <div t-attf-class="#{'col-6' if report_type != 'html' else 'col-sm-6 col-md-6'}">
                             <table class="table table-sm" style="page-break-inside: avoid;">
-                                <t t-if="o.amount_total_words_primary">
+                                <t t-if="o.amount_total">
                                     <tr class="border-black o_total">
                                         <td t-attf-class="#{'text-right' if primary_dir == 'rtl' else 'text-left'}">
                                             <strong>
@@ -394,7 +394,7 @@
                                         </td>
                                     </tr>
                                 </t>
-                                <t t-if="o.amount_total_words_secondary">
+                                <t t-if="o.amount_total">
                                     <tr class="border-black o_total">
                                         <td t-attf-class="#{'text-right' if secondary_dir == 'rtl' else 'text-left'}">
                                             <strong>

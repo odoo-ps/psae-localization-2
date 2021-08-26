@@ -41,8 +41,8 @@ msgstr "الكمية"
 
 #. module: l10n_sa_pos_receipt
 #: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0
-msgid "SA_Description"
-msgstr "الوصف"
+msgid "Description "
+msgstr "الوصف "
 
 #. module: l10n_sa_pos_receipt
 #: code:addons/l10n_sa_pos_receipt/static/src/xml/OrderReceipt.xml:0

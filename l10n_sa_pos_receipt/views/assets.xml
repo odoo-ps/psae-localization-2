@@ -3,15 +3,16 @@
         <template id="assets_backend" name="hr assets" inherit_id="web.assets_backend">
             <xpath expr="." position="inside">
                 <link rel="stylesheet" href="/l10n_sa_pos_receipt/static/src/css/pos_receipts.css"/>
-<!--                <script type="text/javascript" src="/l10n_sa_pos_receipt/static/src/js/qr.js"></script>-->
+                <script type="text/javascript" src="/l10n_sa_pos_receipt/static/src/js/qr.js"></script>
             </xpath>
         </template>
 
         <template id="assets" name="point_of_sale assets" inherit_id="point_of_sale.assets">
             <xpath expr="." position="inside">
                 <link rel="stylesheet" href="/l10n_sa_pos_receipt/static/src/css/pos_receipts.css"/>
-<!--                <script type="text/javascript" src="/l10n_sa_pos_receipt/static/src/js/qr.js"></script>-->
+                <script type="text/javascript" src="/l10n_sa_pos_receipt/static/src/js/qr.js"></script>
                 <script type="text/javascript" src="/l10n_sa_pos_receipt/static/src/js/models.js"></script>
+                <script type="text/javascript" src="/l10n_sa_pos_receipt/static/src/js/Screens/ReceiptScreen/OrderReceipt.js"></script>
             </xpath>
         </template>
 

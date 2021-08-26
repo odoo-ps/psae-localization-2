@@ -1,0 +1,265 @@
+<odoo>
+    <data noupdate="1">
+        <record id="l10n_sa_tax_report_vat_filing_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_vat_filing')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report,name</field>
+            <field name="src">VAT Filing Report</field>
+            <field name="value">الإقرار الضريبي</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_vat_all_sales_base_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_vat_all_sales_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">VAT on Sales and all other Outputs (Base)</field>
+            <field name="value">ضريبة القيمة المضافة على المبيعات (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_standard_rated_15_base_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_standard_rated_15_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">1. Standard Rated 15% (Base)</field>
+            <field name="value">1. المبيعات الخاضعة لنسبة أساسية (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_special_sales_to_locals_base_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_special_sales_to_locals_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">2. Special Sales to Locals (Base)</field>
+            <field name="value">2. المبيعات للمواطنين (الخدمات الصحية  الخاصة/التعليم الأهلي الخاص) (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_local_sales_subject_to_0_base_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_local_sales_subject_to_0_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">3. Local Sales Subject to 0% (Base)</field>
+            <field name="value">3. المبيعات المحلية الخاضعة للنسبة الصفرية (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_export_sales_base_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_export_sales_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">4. Export Sales (Base)</field>
+            <field name="value">4. الصادرات (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_exempt_sales_base_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_exempt_sales_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">5. Exempt Sales (Base)</field>
+            <field name="value">5. المبيعات معفاة من الضريبة (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_net_sales_base_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_net_sales_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">6. Net Sales (Base)</field>
+            <field name="value">6. إجمالي المبيعات (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_vat_all_expenses_base_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_vat_all_expenses_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">VAT on Expenses and all other Inputs (Base)</field>
+            <field name="value">ضريبة القيمة المضافة على المشتريات (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_standard_rated_15_purchases_base_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_standard_rated_15_purchases_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">7. Standard rated 15% Purchases (Base)</field>
+            <field name="value">7. ضريبة القيمة المضافة على المشتريات (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_taxable_imports_15_paid_to_customs_base_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_taxable_imports_15_paid_to_customs_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">8. Taxable Imports 15% Paid to Customs (Base)</field>
+            <field name="value">8. الاستيرادات الخاضعة لضريبة القيمة المضافة بالنسبة الأساسية و التي تدفع في الجمارك 15 % (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_imports_subject_tp_reverse_charge_mechanism_base_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_imports_subject_tp_reverse_charge_mechanism_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">9. Imports subject to reverse charge mechanism (Base)</field>
+            <field name="value">9. الاستيرادات الخاضعة لضريبة القيمة المضافة التي تُطبق عليها آلية الاحتساب العكس (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_zero_rated_purchases_bas_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_zero_rated_purchases_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">10. Zero Rated Purchases (Base)</field>
+            <field name="value">10. المشتريات الخاضعة للنسبة الصفرية (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_exempt_purchases_base_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_exempt_purchases_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">11. Exempt Purchases (Base)</field>
+            <field name="value">11. المشتريات معفاة من الضريبة (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_net_purchases_base_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_net_purchases_base')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">12. Net Purchases (Base)</field>
+            <field name="value">12. إجمالي المشتريات (أساسي)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_vat_all_sales_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_vat_all_sales_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">VAT on Sales and all other Outputs (Tax)</field>
+            <field name="value">ضريبة القيمة المضافة على المبيعات (ضريبة)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_standard_rated_15_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_standard_rated_15_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">1. Standard Rated 15% (Tax)</field>
+            <field name="value">1. المبيعات الخاضعة لنسبة أساسية (ضريبة)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_special_sales_to_locals_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_special_sales_to_locals_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">2. Special Sales to Locals (Tax)</field>
+            <field name="value">2. المبيعات للمواطنين (الخدمات الصحية  الخاصة/التعليم الأهلي الخاص) (ضريبة)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_local_sales_subject_to_0_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_local_sales_subject_to_0_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">3. Local Sales Subject to 0% (Tax)</field>
+            <field name="value">3. المبيعات المحلية الخاضعة للنسبة الصفرية (ضريبة)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_export_sales_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_export_sales_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">4. Export Sales (Tax)</field>
+            <field name="value">4. الصادرات (ضريبة)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_exempt_sales_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_exempt_sales_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">5. Exempt Sales (Tax)</field>
+            <field name="value">5. المبيعات معفاة من الضريبة (ضريبة)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_net_sales_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_net_sales_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">6. Net Sales (Tax)</field>
+            <field name="value">6. إجمالي المبيعات (ضريبة)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_vat_all_expenses_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_vat_all_expenses_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">VAT on Expenses and all other Inputs (Tax)</field>
+            <field name="value">ضريبة القيمة المضافة على المشتريات (ضريبة)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_standard_rated_15_purchases_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_standard_rated_15_purchases_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">7. Standard rated 15% Purchases (Tax)</field>
+            <field name="value">7. ضريبة القيمة المضافة على المشتريات (ضريبة)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_taxable_imports_15_paid_to_customs_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_taxable_imports_15_paid_to_customs_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">8. Taxable Imports 15% Paid to Customs (Tax)</field>
+            <field name="value">8. الاستيرادات الخاضعة لضريبة القيمة المضافة بالنسبة الأساسية و التي تدفع في الجمارك 15 % (ضريبة)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_imports_subject_tp_reverse_charge_mechanism_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_imports_subject_tp_reverse_charge_mechanism_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">9. Imports subject to reverse charge mechanism (Tax)</field>
+            <field name="value">9. الاستيرادات الخاضعة لضريبة القيمة المضافة التي تُطبق عليها آلية الاحتساب العكس (ضريبة)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_zero_rated_purchases_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_zero_rated_purchases_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">10. Zero Rated Purchases (Tax)</field>
+            <field name="value">10. المشتريات الخاضعة للنسبة الصفرية (ضريبة)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_exempt_purchases_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_exempt_purchases_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">11. Exempt Purchases (Tax)</field>
+            <field name="value">11. المشتريات معفاة من الضريبة (ضريبة)</field>
+        </record>
+        <record id="l10n_sa_tax_report_line_net_purchases_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.tax_report_line_net_purchases_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax.report.line,name</field>
+            <field name="src">12. Net Purchases (Tax)</field>
+            <field name="value">12. إجمالي المشتريات (ضريبة)</field>
+        </record>
+    </data>
+</odoo>

@@ -320,8 +320,8 @@
             }),
         ]"/>
         </record>
-        <record id="sa_withholding_tax_5" model="account.tax.template">
-            <field name="name">Withholding Tax 5%</field>
+        <record id="sa_withholding_tax_5_rental" model="account.tax.template">
+            <field name="name">Withholding Tax 5% (Rental)</field>
             <field name="type_tax_use">purchase</field>
             <field name="amount">5</field>
             <field name="amount_type">percent</field>
@@ -333,27 +333,283 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_rental_base')],
             }),
             (0,0, {
                 'factor_percent': 100,
                 'account_id': ref('sa_account_400073'),
                 'repartition_type': 'tax',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_rental_tax')],
             }),
         ]"/>
             <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_rental_base')],
             }),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
                 'account_id': ref('sa_account_400073'),
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_rental_tax')],
             }),
         ]"/>
         </record>
-        <record id="sa_withholding_tax_15" model="account.tax.template">
-            <field name="name">Withholding Tax 15%</field>
+        <record id="sa_withholding_tax_5_tickets_or_air_freight" model="account.tax.template">
+            <field name="name">Withholding Tax 5% (Tickets or Air Freight)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">5</field>
+            <field name="amount_type">percent</field>
+            <field name="tax_scope">service</field>
+            <field name="description">Withholding Tax 5%</field>
+            <field name="tax_group_id" ref="sa_tax_group_taxes_withholding"/>
+            <field name="chart_template_id" ref="sa_chart_template_standard"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_tickets_or_air_freight_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'account_id': ref('sa_account_400073'),
+                'repartition_type': 'tax',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_tickets_or_air_freight_tax')],
+            }),
+        ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_tickets_or_air_freight_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('sa_account_400073'),
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_tickets_or_air_freight_tax')],
+            }),
+        ]"/>
+        </record>
+        <record id="sa_withholding_tax_5_tickets_or_sea_freight" model="account.tax.template">
+            <field name="name">Withholding Tax 5% (Tickets or Sea Freight)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">5</field>
+            <field name="amount_type">percent</field>
+            <field name="tax_scope">service</field>
+            <field name="description">Withholding Tax 5%</field>
+            <field name="tax_group_id" ref="sa_tax_group_taxes_withholding"/>
+            <field name="chart_template_id" ref="sa_chart_template_standard"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_tickets_or_sea_freight_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'account_id': ref('sa_account_400073'),
+                'repartition_type': 'tax',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_tickets_or_sea_freight_tax')],
+            }),
+        ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_tickets_or_sea_freight_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('sa_account_400073'),
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_tickets_or_sea_freight_tax')],
+            }),
+        ]"/>
+        </record>
+        <record id="sa_withholding_tax_5_international_telecommunication" model="account.tax.template">
+            <field name="name">Withholding Tax 5% (International Telecommunication)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">5</field>
+            <field name="amount_type">percent</field>
+            <field name="tax_scope">service</field>
+            <field name="description">Withholding Tax 5%</field>
+            <field name="tax_group_id" ref="sa_tax_group_taxes_withholding"/>
+            <field name="chart_template_id" ref="sa_chart_template_standard"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_international_telecommunication_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'account_id': ref('sa_account_400073'),
+                'repartition_type': 'tax',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_international_telecommunication_tax')],
+            }),
+        ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_international_telecommunication_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('sa_account_400073'),
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_international_telecommunication_tax')],
+            }),
+        ]"/>
+        </record>
+        <record id="sa_withholding_tax_5_distributed_profits" model="account.tax.template">
+            <field name="name">Withholding Tax 5% (Distributed Profits)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">5</field>
+            <field name="amount_type">percent</field>
+            <field name="tax_scope">service</field>
+            <field name="description">Withholding Tax 5%</field>
+            <field name="tax_group_id" ref="sa_tax_group_taxes_withholding"/>
+            <field name="chart_template_id" ref="sa_chart_template_standard"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_distributed_profits_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'account_id': ref('sa_account_400073'),
+                'repartition_type': 'tax',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_distributed_profits_tax')],
+            }),
+        ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_distributed_profits_tax')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('sa_account_400073'),
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_distributed_profits_base')],
+            }),
+        ]"/>
+        </record>
+        <record id="sa_withholding_tax_5_consulting_and_technical" model="account.tax.template">
+            <field name="name">Withholding Tax 5% (Consulting and Technical)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">5</field>
+            <field name="amount_type">percent</field>
+            <field name="tax_scope">service</field>
+            <field name="description">Withholding Tax 5%</field>
+            <field name="tax_group_id" ref="sa_tax_group_taxes_withholding"/>
+            <field name="chart_template_id" ref="sa_chart_template_standard"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_consulting_and_technical_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'account_id': ref('sa_account_400073'),
+                'repartition_type': 'tax',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_consulting_and_technical_tax')],
+            }),
+        ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_consulting_and_technical_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('sa_account_400073'),
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_consulting_and_technical_tax')],
+            }),
+        ]"/>
+        </record>
+        <record id="sa_withholding_tax_5_return_from_loans" model="account.tax.template">
+            <field name="name">Withholding Tax 5% (Return from Loans)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">5</field>
+            <field name="amount_type">percent</field>
+            <field name="tax_scope">service</field>
+            <field name="description">Withholding Tax 5%</field>
+            <field name="tax_group_id" ref="sa_tax_group_taxes_withholding"/>
+            <field name="chart_template_id" ref="sa_chart_template_standard"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_return_from_loans_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'account_id': ref('sa_account_400073'),
+                'repartition_type': 'tax',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_return_from_loans_tax')],
+            }),
+        ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_return_from_loans_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('sa_account_400073'),
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_return_from_loans_tax')],
+            }),
+        ]"/>
+        </record>
+        <record id="sa_withholding_tax_5_insurance_amd_reinsurance" model="account.tax.template">
+            <field name="name">Withholding Tax 5% (Insurance &amp; Reinsurance)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">5</field>
+            <field name="amount_type">percent</field>
+            <field name="tax_scope">service</field>
+            <field name="description">Withholding Tax 5%</field>
+            <field name="tax_group_id" ref="sa_tax_group_taxes_withholding"/>
+            <field name="chart_template_id" ref="sa_chart_template_standard"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_insurance_and_reinsurance_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'account_id': ref('sa_account_400073'),
+                'repartition_type': 'tax',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_5_insurance_and_reinsurance_tax')],
+            }),
+        ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_insurance_and_reinsurance_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('sa_account_400073'),
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_5_insurance_and_reinsurance_tax')],
+            }),
+        ]"/>
+        </record>
+        <record id="sa_withholding_tax_15_royalties" model="account.tax.template">
+            <field name="name">Withholding Tax 15% (Royalties)</field>
             <field name="type_tax_use">purchase</field>
             <field name="amount">15</field>
             <field name="amount_type">percent</field>
@@ -365,27 +621,139 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_15_royalties_base')],
             }),
             (0,0, {
                 'factor_percent': 100,
                 'account_id': ref('sa_account_400073'),
                 'repartition_type': 'tax',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_15_royalties_tax')],
             }),
         ]"/>
             <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_15_royalties_base')],
             }),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
                 'account_id': ref('sa_account_400073'),
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_15_royalties_tax')],
             }),
         ]"/>
         </record>
-        <record id="sa_withholding_tax_20" model="account.tax.template">
-            <field name="name">Withholding Tax 20%</field>
+        <record id="sa_withholding_tax_15_paid_services_from_main_branch" model="account.tax.template">
+            <field name="name">Withholding Tax 15% (Paid Services from Main Branch)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">15</field>
+            <field name="amount_type">percent</field>
+            <field name="tax_scope">service</field>
+            <field name="description">Withholding Tax 15%</field>
+            <field name="tax_group_id" ref="sa_tax_group_taxes_withholding"/>
+            <field name="chart_template_id" ref="sa_chart_template_standard"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_15_paid_services_from_main_branch_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'account_id': ref('sa_account_400073'),
+                'repartition_type': 'tax',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_15_paid_services_from_main_branch_tax')],
+            }),
+        ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_15_paid_services_from_main_branch_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('sa_account_400073'),
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_15_paid_services_from_main_branch_tax')],
+            }),
+        ]"/>
+        </record>
+        <record id="sa_withholding_tax_15_paid_services_from_another_branch" model="account.tax.template">
+            <field name="name">Withholding Tax 15% (Paid Services from another branch)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">15</field>
+            <field name="amount_type">percent</field>
+            <field name="tax_scope">service</field>
+            <field name="description">Withholding Tax 15%</field>
+            <field name="tax_group_id" ref="sa_tax_group_taxes_withholding"/>
+            <field name="chart_template_id" ref="sa_chart_template_standard"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_15_paid_services_from_another_branch_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'account_id': ref('sa_account_400073'),
+                'repartition_type': 'tax',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_15_paid_services_from_another_branch_tax')],
+            }),
+        ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_15_paid_services_from_another_branch_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('sa_account_400073'),
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_15_paid_services_from_another_branch_tax')],
+            }),
+        ]"/>
+        </record>
+        <record id="sa_withholding_tax_15_others" model="account.tax.template">
+            <field name="name">Withholding Tax 15% (Others)</field>
+            <field name="type_tax_use">purchase</field>
+            <field name="amount">15</field>
+            <field name="amount_type">percent</field>
+            <field name="tax_scope">service</field>
+            <field name="description">Withholding Tax 15%</field>
+            <field name="tax_group_id" ref="sa_tax_group_taxes_withholding"/>
+            <field name="chart_template_id" ref="sa_chart_template_standard"/>
+            <field name="invoice_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_15_others_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'account_id': ref('sa_account_400073'),
+                'repartition_type': 'tax',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_15_others_tax')],
+            }),
+        ]"/>
+            <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'base',
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_15_others_base')],
+            }),
+            (0,0, {
+                'factor_percent': 100,
+                'repartition_type': 'tax',
+                'account_id': ref('sa_account_400073'),
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_15_others_tax')],
+            }),
+        ]"/>
+        </record>
+        <record id="sa_withholding_tax_20_managerial" model="account.tax.template">
+            <field name="name">Withholding Tax 20% (Managerial)</field>
             <field name="type_tax_use">purchase</field>
             <field name="amount">20</field>
             <field name="amount_type">percent</field>
@@ -397,22 +765,26 @@
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_20_managerial_base')],
             }),
             (0,0, {
                 'factor_percent': 100,
                 'account_id': ref('sa_account_400073'),
                 'repartition_type': 'tax',
+                'plus_report_line_ids': [ref('tax_report_line_withholding_tax_20_managerial_tax')],
             }),
         ]"/>
             <field name="refund_repartition_line_ids" eval="[(5, 0, 0),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'base',
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_20_managerial_base')],
             }),
             (0,0, {
                 'factor_percent': 100,
                 'repartition_type': 'tax',
                 'account_id': ref('sa_account_400073'),
+                'minus_report_line_ids': [ref('tax_report_line_withholding_tax_20_managerial_tax')],
             }),
         ]"/>
         </record>

@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+# Part of Odoo. See LICENSE file for full copyright and licensing details.
 {
     'name': "Multi lang POS Receipts",
 
@@ -14,13 +15,10 @@
     'author': "Odoo S.A.",
     'website': "http://www.odoo.com",
 
-    # Categories can be used to filter modules in modules listing
-    # Check https://github.com/odoo/odoo/blob/master/odoo/addons/base/data/ir_module_category_data.xml
-    # for the full list
     'version': '1.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['point_of_sale'],
+    'depends': ['point_of_sale', 'l10n_sa_invoice'],
 
     # always loaded
     'data': [
@@ -29,6 +27,4 @@
         'views/pos_config.xml',
     ],
     'qweb': ['static/src/xml/OrderReceipt.xml'],
-    # only loaded in demonstration mode
-    'demo': [],
 }

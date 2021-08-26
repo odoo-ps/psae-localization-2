@@ -4,6 +4,161 @@
 #
 
 #. module: l10n_sa_invoice
-#: model:report.invoice.lang,due_date
+#: model:report.invoice.lang,posted:l10n_sa_invoice.sa_arabic_invoice
+msgid "Tax Invoice"
+msgstr "فاتورة ضريبية"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,draft:l10n_sa_invoice.sa_arabic_invoice
+msgid "Draft Tax Invoice"
+msgstr "مسودة فاتورة ضريبية"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,cancel:l10n_sa_invoice.sa_arabic_invoice
+msgid "Cancelled Tax Invoice<"
+msgstr "فاتورة ضريبية ملغاة"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,out_refund:l10n_sa_invoice.sa_arabic_invoice
+msgid "Credit Note"
+msgstr "إشعار خصم"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,in_refund:l10n_sa_invoice.sa_arabic_invoice
+msgid "Vendor Credit Note"
+msgstr "إشعار خصم المورد"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,in_invoice:l10n_sa_invoice.sa_arabic_invoice
+msgid "Vendor Bill"
+msgstr "فاتورة المورد"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,invoice_date:l10n_sa_invoice.sa_arabic_invoice
+msgid "Invoice Date"
+msgstr "تاريخ الفاتورة"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,due_date:l10n_sa_invoice.sa_arabic_invoice
 msgid "Due Date"
 msgstr "تاريخ الاستحقاق"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,delivery_date:l10n_sa_invoice.sa_arabic_invoice
+msgid "Delivery Date"
+msgstr "تاريخ التوريد"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,source:l10n_sa_invoice.sa_arabic_invoice
+msgid "Source"
+msgstr "المصدر"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,customer_code:l10n_sa_invoice.sa_arabic_invoice
+msgid "Customer Code"
+msgstr "كود العميل"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,reference:l10n_sa_invoice.sa_arabic_invoice
+msgid "Reference"
+msgstr "رقم الإشارة"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,description:l10n_sa_invoice.sa_arabic_invoice
+msgid "Description"
+msgstr "الوصف"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,source_document:l10n_sa_invoice.sa_arabic_invoice
+msgid "Source Document"
+msgstr "المستند المصدر"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,quantity:l10n_sa_invoice.sa_arabic_invoice
+msgid "Quantity"
+msgstr "الكمية"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,unit_price:l10n_sa_invoice.sa_arabic_invoice
+msgid "Unit Price"
+msgstr "سعر الوحدة"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,discount_percent:l10n_sa_invoice.sa_arabic_invoice
+msgid "Discount (%)"
+msgstr "الخصم (%)"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,taxes:l10n_sa_invoice.sa_arabic_invoice
+msgid "Total Vat"
+msgstr "مجموع ضريبة القيمة المضافة"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,amount:l10n_sa_invoice.sa_arabic_invoice
+msgid "Taxable Amount"
+msgstr "المبلغ الخاضع للضريبة"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,price:l10n_sa_invoice.sa_arabic_invoice
+msgid "Price"
+msgstr "السعر"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,subtotal:l10n_sa_invoice.sa_arabic_invoice
+msgid "Subtotal Subject to VAT"
+msgstr "المجموع الخاضع لضريبة القيمة المضافة"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,total:l10n_sa_invoice.sa_arabic_invoice
+msgid "Total"
+msgstr "الإجمالي"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,amount_due:l10n_sa_invoice.sa_arabic_invoice
+msgid "Amount Due"
+msgstr "المبلغ المستحق"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,payment_reference:l10n_sa_invoice.sa_arabic_invoice
+msgid "Please use the following communication for your payment"
+msgstr "برجاء استخدام هذا المرجع عند السداد"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,total_price:l10n_sa_invoice.sa_arabic_invoice
+msgid "Total including VAT"
+msgstr "المجموع شامل ضريبة القيمة المضافة"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,tax_id:l10n_sa_invoice.sa_arabic_invoice
+msgid "VAT ID"
+msgstr "معرف الضريبة"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,paid_on:l10n_sa_invoice.sa_arabic_invoice
+msgid "Paid on"
+msgstr "دفعت في"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,amount_due_in_words:l10n_sa_invoice.sa_arabic_invoice
+msgid "Amount Due in words"
+msgstr "المبلغ المستحق كتابةً"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,incoterm:l10n_sa_invoice.sa_arabic_invoice
+msgid "Incoterm"
+msgstr "شرط تجاري"
+
+#. module: l10n_sa_invoice
+#: model:report.invoice.lang,tax_amount:l10n_sa_invoice.sa_arabic_invoice
+msgid "Tax Amount"
+msgstr "مبلغ الضريبة"
+
+#. module: l10n_sa_invoice
+#: model:res.currency,currency_unit_label:base.SAR
+msgid "Riyal"
+msgstr "ريال"
+
+#. module: l10n_sa_invoice
+#: model:res.currency,currency_subunit_label:base.SAR
+msgid "Halala"
+msgstr "هللة"

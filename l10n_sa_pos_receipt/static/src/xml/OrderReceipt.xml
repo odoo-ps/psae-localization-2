@@ -8,22 +8,8 @@
             <div class="pos-receipt" t-else="">
                 <div class="pos-receipt-contact">
                     <t t-if='receipt.company.logo'>
-                        <t t-log="receipt.qr_code"/>
-                        <t t-log="env"/>
                         <img class="pos-receipts-logo" t-att-src='receipt.company.logo' alt="Logo"/>
-<!--                        <img alt="QR" class="pos-receipt-logo"-->
-<!--                             t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s'%('QR', receipt.qr_code, 150, 150)"/>-->
-<!--                        <div id="qrcode" class="pos-receipt-logo"></div>-->
-<!--                            <script type="text/javascript">-->
-<!--                            var qrcode = new QRCode(document.getElementById("qrcode"), {-->
-<!--                                text: receipt.qr_code,-->
-<!--                                width: 128,-->
-<!--                                height: 128,-->
-<!--                                colorDark : "#000000",-->
-<!--                                colorLight : "#ffffff",-->
-<!--                                correctLevel : QRCode.CorrectLevel.H-->
-<!--                            });-->
-<!--                            </script>-->
+                        <div t-if="receipt.qr_code" id="qrcode" class="pos-receipt-logo"></div>
                             <br/>
                     </t>
                     <t>
@@ -86,15 +72,15 @@
                 <table class="table table-receipt">
                     <thead class="separator-dash">
                         <tr>
-                            <td class="col-product"><t t-esc="env.pos.translate('Description', env.pos.lang_1)"/></td>
+                            <td class="col-product"><t t-esc="env.pos.translate('Description ', env.pos.lang_1)"/></td>
                             <td class="center-25"><t t-esc="env.pos.translate('Unit Price', env.pos.lang_1)"/></td>
                             <td class="center-10"><t t-esc="env.pos.translate('Qty', env.pos.lang_1)"/></td>
                             <td class="center-25"><t t-esc="env.pos.translate('Item Subtotal (Including VAT)', env.pos.lang_1)"/></td>
                         </tr>
                         <tr>
-                            <td class="col-product"><t t-esc="env.pos.translate('SA_Description', env.pos.lang_2)"/></td>
-                            <td class="center-25"><t t-esc="env.pos.translate('SA_Unit Price', env.pos.lang_2)"/></td>
-                            <td class="center-10"><t t-esc="env.pos.translate('SA_Qty', env.pos.lang_2)"/></td>
+                            <td class="col-product"><t t-esc="env.pos.translate('Description ', env.pos.lang_2)"/></td>
+                            <td class="center-25"><t t-esc="env.pos.translate('Unit Price', env.pos.lang_2)"/></td>
+                            <td class="center-10"><t t-esc="env.pos.translate('Qty', env.pos.lang_2)"/></td>
                             <td class="center-25"><t t-esc="env.pos.translate('Item Subtotal (Including VAT)', env.pos.lang_2)"/></td>
                         </tr>
                         <br/>
@@ -158,7 +144,7 @@
                             <td class="width-33 align-left"><t t-esc="env.pos.translate('Change', env.pos.lang_1)"/>:</td>
                             <td class="width-33 align-center"><t t-esc='env.pos.format_currency(receipt.change)'/></td>
                             <td class="width-33 align-right">: <t
-                                    t-esc="env.pos.translate('SA_Change', env.pos.lang_2)"/></td>
+                                    t-esc="env.pos.translate('Change', env.pos.lang_2)"/></td>
                         </tr>
                     </tbody>
                 </table>

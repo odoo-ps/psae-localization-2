@@ -1,6 +1,5 @@
 # -*- encoding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-
 {
     'name': 'Saudi Arabia - Accounting',
     'version': '2.0',
@@ -16,6 +15,7 @@ In future this module will include some payroll rules for ME .
     'website': 'http://www.dvit.me',
     'depends': ['account', 'l10n_multilang'],
     'data': [
+        'data/account_data.xml',
         'data/account_chart_template_data.xml',
         'data/account.account.template.csv',
         'data/account_tax_group.xml',
@@ -23,9 +23,14 @@ In future this module will include some payroll rules for ME .
         'data/account_chart_template_configure_data.xml',
         'data/account_tax_report_data.xml',
         'data/account_tax_template_data.xml',
+        'data/res_country_group_data.xml',
+        'data/account_fiscal_position_template_data.xml',
+        # 'data/account_tax_translation_data.xml',
+        # 'data/account_tax_report_translation_data.xml',
     ],
     'demo': [
         'demo/demo_company.xml',
     ],
+    'pre_init_hook': 'pre_init_hook',
     'post_init_hook': 'post_init_hook',
 }

@@ -16,7 +16,6 @@
         'views/report_invoice.xml',
         'views/res_config_settings_views.xml',
         'views/report_dual_language_invoice.xml',
-        'views/qr_details.xml',
     ],
     'pre_init_hook': 'install_arabic',
 }
