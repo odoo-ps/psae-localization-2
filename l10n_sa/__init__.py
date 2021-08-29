@@ -26,19 +26,20 @@ def link_accounts_to_journals(cr, registry):
     for sa_company in sa_company_ids:
         ifrs_and_zakat_journals = env['account.journal'].search(
             [('company_id', '=', sa_company), ('code', 'in', ('IFRS', 'ZAKAT'))], limit=2)
-        if ifrs_and_zakat_journals[0].code == "IFRS":
-            ifrs_journal_id = ifrs_and_zakat_journals[0].id
-            zakat_jounral_id = ifrs_and_zakat_journals[1].id
-        else:
-            ifrs_journal_id = ifrs_and_zakat_journals[1].id
-            zakat_jounral_id = ifrs_and_zakat_journals[0].id
-        accounts = env['account.account'].search([('company_id', '=', sa_company),
-                                                  ('code', 'in', [*zakat_account_codes, *ifrs_account_codes])])
-        for account in accounts:
-            if account.code in zakat_account_codes:
-                account.allowed_journal_ids = [(4, zakat_jounral_id, 0)]
-            elif account.code in ifrs_account_codes:
-                account.allowed_journal_ids = [(4, ifrs_journal_id, 0)]
+        if ifrs_and_zakat_journals:
+            if ifrs_and_zakat_journals[0].code == "IFRS":
+                ifrs_journal_id = ifrs_and_zakat_journals[0].id
+                zakat_jounral_id = ifrs_and_zakat_journals[1].id
+            else:
+                ifrs_journal_id = ifrs_and_zakat_journals[1].id
+                zakat_jounral_id = ifrs_and_zakat_journals[0].id
+            accounts = env['account.account'].search([('company_id', '=', sa_company),
+                                                      ('code', 'in', [*zakat_account_codes, *ifrs_account_codes])])
+            for account in accounts:
+                if account.code in zakat_account_codes:
+                    account.allowed_journal_ids = [(4, zakat_jounral_id, 0)]
+                elif account.code in ifrs_account_codes:
+                    account.allowed_journal_ids = [(4, ifrs_journal_id, 0)]
 
 
 def set_accounts_on_tax_groups(cr, registry):
