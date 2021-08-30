@@ -15,7 +15,7 @@
         'views/view_move_form.xml',
         'views/report_invoice.xml',
         'views/res_config_settings_views.xml',
-        'views/report_dual_language_invoice.xml',
+        # 'views/report_dual_language_invoice.xml',
     ],
     # 'pre_init_hook': 'install_arabic',
 }
