@@ -1,0 +1,40 @@
+<odoo>
+    <data noupdate="1">
+        <record id="l10n_sa_account_reports_zak" model="account.financial.html.report.line">
+            <field name="name">Zakat Expense</field>
+            <field name="code">ZAK</field>
+            <field name="financial_report_id" ref="account_reports.account_financial_report_profitandloss0"/>
+            <field name="formulas">ZKE</field>
+            <field name="sequence" eval="4"/>
+            <field name="level" eval="0" />
+        </record>
+        <record id="l10n_sa_account_reports_zke" model="account.financial.html.report.line">
+            <field name="name">Zakat Expense</field>
+            <field name="code">ZKE</field>
+            <field name="formulas">sum</field>
+            <field name="parent_id" ref="l10n_sa_account_reports_zak"/>
+            <field name="financial_report_id" ref="account_reports.account_financial_report_profitandloss0"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="0" />
+            <field name="domain" eval="[['account_id.code','=','400072']]"/>
+        </record>
+        <record id="l10n_sa_account_reports_npz" model="account.financial.html.report.line">
+            <field name="name">Net Profit After Zakat</field>
+            <field name="code">NPZ</field>
+            <field name="financial_report_id" ref="account_reports.account_financial_report_profitandloss0"/>
+            <field name="formulas">NEP - ZKE</field>
+            <field name="sequence" eval="5"/>
+            <field name="level" eval="0" />
+        </record>
+        <record id="l10n_sa_account_reports_zke" model="account.financial.html.report.line">
+            <field name="name">Zakat Expense</field>
+            <field name="code">ZKE</field>
+            <field name="formulas">sum</field>
+            <field name="parent_id" ref="l10n_sa_account_reports_zak"/>
+            <field name="financial_report_id" ref="account_reports.account_financial_report_profitandloss0"/>
+            <field name="sequence" eval="1"/>
+            <field name="level" eval="0" />
+            <field name="domain" eval="[['account_id.code','=','400072']]"/>
+        </record>
+</data>
+</odoo>
