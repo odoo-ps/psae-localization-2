@@ -1,46 +1,19 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 import base64
-import logging
 
 from odoo import api, fields, models, _
 from odoo.exceptions import UserError
-
-_logger = logging.getLogger(__name__)
-
-try:
-    from num2words import num2words
-except ImportError:
-    _logger.warning("The num2words python library is not installed, amount-to-text features won't be fully available.")
-    num2words = None
 
 
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
     narration = fields.Text(translate=True)
-    # amount_total_words_primary = fields.Char(compute="_compute_amount_to_words")
-    # amount_total_words_secondary = fields.Char(compute="_compute_amount_to_words")
     invoice_date = fields.Date(required=True, default=fields.Date.today)
     delivery_date = fields.Date(string="Delivery Date", required=True, default=fields.Date.today)
     qr_code_str = fields.Char(compute="_compute_qr_code_str")
     confirmation_datetime = fields.Datetime(default=False, readonly=True)
-
-    # @api.depends('amount_residual')
-    # def _compute_amount_to_words(self):
-    #     if num2words is not None:
-    #         for record in self:
-    #             if record.company_id.secondary_language and record.company_id.primary_language_code and record.company_id.secondary_language_code:
-    #                 try:
-    #                     record.amount_total_words_primary = num2words(record.amount_residual,
-    #                                                                   lang=record.company_id.primary_language_code.code)
-    #                 except NotImplementedError:
-    #                     record.amount_total_words_primary = False
-    #                 try:
-    #                     record.amount_total_words_secondary = num2words(record.amount_residual,
-    #                                                                     lang=record.company_id.secondary_language_code.code)
-    #                 except NotImplementedError:
-    #                     record.amount_total_words_secondary = False
 
     def _get_name_invoice_report(self):
         self.ensure_one()

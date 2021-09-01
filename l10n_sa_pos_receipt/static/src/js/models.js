@@ -28,6 +28,7 @@ odoo.define('l10n_sa_pos_receipt.pos_multi_lang', function (require) {
                 ];
             },
             loaded: function (self, terms) {
+                debugger
                 self.translations = {}
                 _.each(self.langs, function (lang) {
                     if (lang.name === self.config.first_language_id[1]) {

@@ -133,7 +133,6 @@ sa_account_400057,Other Non Operating Expenses,400057,account.data_account_type_
 sa_account_400058,Credit Card Charges,400058,account.data_account_type_expenses,l10n_sa.sa_chart_template_standard,False
 sa_account_400059,Bank Finance & Loan Charges,400059,account.data_account_type_expenses,l10n_sa.sa_chart_template_standard,False
 sa_account_400060,Air Miles Card Charges,400060,account.data_account_type_expenses,l10n_sa.sa_chart_template_standard,False
-sa_account_400061,Credit Card Swipe Charges,400061,account.data_account_type_expenses,l10n_sa.sa_chart_template_standard,False
 sa_account_400062,PayPal Charges,400062,account.data_account_type_expenses,l10n_sa.sa_chart_template_standard,False
 sa_account_400063,Amortization on Leasehold Improvement,400063,account.data_account_type_expenses,l10n_sa.sa_chart_template_standard,False
 sa_account_400064,Depreciation Of Furniture & Office Equipment,400064,account.data_account_type_expenses,l10n_sa.sa_chart_template_standard,False
