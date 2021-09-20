@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="default_eta_domain" model="ir.config_parameter">
+            <field name="key">default.eta.production.domain</field>
+            <field name="value">https://api.invoicing.eta.gov.eg</field>
+        </record>
+
+        <record id="default_eta_token_domain" model="ir.config_parameter">
+            <field name="key">default.eta.token.production.domain</field>
+            <field name="value">https://id.eta.gov.eg</field>
+        </record>
+    </data>
+</odoo>
