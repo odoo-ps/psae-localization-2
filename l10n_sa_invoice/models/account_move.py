@@ -13,7 +13,7 @@ class AccountMove(models.Model):
     invoice_date = fields.Date(required=True, default=fields.Date.today)
     delivery_date = fields.Date(string="Delivery Date", required=True, default=fields.Date.today)
     qr_code_str = fields.Char(compute="_compute_qr_code_str")
-    confirmation_datetime = fields.Datetime(default=False, readonly=True)
+    confirmation_datetime = fields.Datetime(default=False, readonly=True, copy=False)
 
     def _get_name_invoice_report(self):
         self.ensure_one()
