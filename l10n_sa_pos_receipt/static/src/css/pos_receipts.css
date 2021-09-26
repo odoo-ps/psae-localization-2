@@ -1,0 +1,71 @@
+.pos-receipts-logo {
+    width: auto !important;
+}
+
+.receipt-size {
+    font-size: 12px;
+    text-align: center;
+}
+
+.center-25 {
+    text-align: center;
+    width: 25%;
+}
+
+.center-10 {
+    text-align: center;
+    width: 10%;
+}
+
+.col-product {
+    text-align: left;
+    width: 40%;
+}
+
+.table-receipt {
+    max-width: 100%;
+    width: 100%;
+    table-layout: fixed;
+    margin-top: 1em;
+}
+
+.width-33 {
+    width: 33.3%;
+}
+
+.align-left {
+    text-align: left;
+}
+
+.align-center {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.width-100 {
+    width: 100%
+}
+
+.company-info {
+    font-weight: bold;
+}
+
+.receipt-info-body {
+    line-height: 1.5;
+}
+
+.separator-dash {
+    height: 1em;
+    border-bottom: 2px dotted;
+}
+
+.margin-bottom-1 {
+    margin-bottom: 1em;
+}
+
+#qrcode > img{
+    margin: auto;
+}

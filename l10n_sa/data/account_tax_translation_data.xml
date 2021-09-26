@@ -1,0 +1,85 @@
+<odoo>
+    <data noupdate="1">
+        <record id="l10n_sa_sales_tax_15_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.sa_sales_tax_15')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax,name</field>
+            <field name="src">Sales Tax 15%</field>
+            <field name="value">ضرائب البيع %15</field>
+        </record>
+        <record id="l10n_sa_local_sales_tax_0_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.sa_local_sales_tax_0')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax,name</field>
+            <field name="src">Local Sales 0%</field>
+            <field name="value">المبيعات المحلية %0</field>
+        </record>
+        <record id="l10n_sa_export_sales_tax_0_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.sa_export_sales_tax_0')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax,name</field>
+            <field name="src">Export Sales 0%</field>
+            <field name="value">مبيعات التصدير %0</field>
+        </record>
+        <record id="l10n_sa_exempt_sales_tax_0_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.sa_exempt_sales_tax_0')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax,name</field>
+            <field name="src">Exempt Sales Tax 0%</field>
+            <field name="value">معفاة من ضريبة المبيعات %0</field>
+        </record>
+        <record id="l10n_sa_purchase_tax_15_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.sa_purchase_tax_15')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax,name</field>
+            <field name="src">Purchase Tax 15%</field>
+            <field name="value">ضريبة الشراء %15</field>
+        </record>
+        <record id="l10n_sa_rcp_tax_15_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.sa_rcp_tax_15')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax,name</field>
+            <field name="src">Reverse charge provision Tax 15%</field>
+            <field name="value">ضريبة مخصص النفقات العكسية %15</field>
+        </record>
+        <record id="l10n_sa_import_tax_paid_15_paid_to_customs_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.sa_import_tax_paid_15_paid_to_customs')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax,name</field>
+            <field name="src">Import tax 15% Paid to customs</field>
+            <field name="value">ضريبة الاستيراد 15٪ تدفع للجمارك</field>
+        </record>
+        <record id="l10n_sa_purchases_tax_0_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.sa_purchases_tax_0')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax,name</field>
+            <field name="src">Purchases 0%</field>
+            <field name="value">المشتريات %0</field>
+        </record>
+        <record id="l10n_sa_exempt_purchases_tax_ar" model="ir.translation">
+            <field name="lang">ar_001</field>
+            <field name="res_id" eval="ref('l10n_sa.sa_exempt_purchases_tax')"/>
+            <field name="type">model</field>
+            <field name="state">translated</field>
+            <field name="name">account.tax,name</field>
+            <field name="src">Exempt Purchases</field>
+            <field name="value">المشتريات المعفاة</field>
+        </record>
+    </data>
+</odoo>

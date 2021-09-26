@@ -1,0 +1,22 @@
+// ------------------------------------------------------------------
+// Google fonts
+// ------------------------------------------------------------------
+$google-font-path-bis: '../fonts/google';
+
+@mixin google-font-bis($family, $type, $weight, $style) {
+    @font-face {
+        font-family: $family;
+        src: url('#{$google-font-path-bis}/#{$family}/#{$family}-#{$type}.ttf') format('truetype');
+        font-weight: $weight;
+        font-style: $style;
+    }
+}
+
+@mixin google-font-pair-bis($family) {
+    @include google-font-bis('#{$family}', 'Regular', 400, normal);
+}
+
+@include google-font-bis('Tajawal', 'Regular', 400, normal);
+@include google-font-bis('Amiri', 'Regular', 400, normal);
+@include google-font-bis('Mirza', 'Regular', 400, normal);
+@include google-font-bis('Markazi_Text', 'Regular', 400, normal);
