@@ -72,45 +72,11 @@
             <field name="amount_python_compute">result = categories.BASIC + categories.ALW - categories.DED</field>
             <field name="struct_id" ref="l10n_ae_hr_payroll.uae_employee_payroll_structure"/>
         </record>
-        <record id="uae_end_of_service_salary_rule" model="hr.salary.rule">
-            <field name="name">End of Service</field>
-            <field name="category_id" ref="hr_payroll.ALW"/>
-            <field name="code">EOS</field>
-            <field name="appears_on_payslip">True</field>
-            <field name="sequence">80</field>
-            <field name="active">True</field>
-            <field name="condition_select">python</field>
-            <field name="condition_python">result = employee.end_employment and not employee.end_of_service</field>
-            <field name="amount_select">code</field>
-            <field name="amount_python_compute"><![CDATA[result = 0
-last_contract = payslip.dict.contract_id
-first_contract = last_contract if len(payslip.dict.employee_id.contract_ids) == 1 else \
-payslip.dict.env['hr.contract'].search([('employee_id', '=', payslip.dict.employee_id.id), ('state', 'in', ('open', 'close'))],
-                               order='date_start asc')[0]
-start_date = first_contract.date_start
-end_date = last_contract.date_end
-relativedelta = payslip.dict._return_relativedelta()
-difference = relativedelta(end_date, start_date)
-compensation_year = last_contract.wage / 30 * 21
-compensation = difference.years * compensation_year + difference.months/12 * compensation_year + difference.days/365 * compensation_year
-years = difference.years
-years_beyond_5 = years - 5
-if 1 <= years < 3:
-    result = compensation * 1 / 3 if payslip.dict.employee_id.resigned else compensation
-elif 3 <= years < 5:
-    result = compensation * 2 / 3 if payslip.dict.employee_id.resigned else compensation
-elif 5 == years:
-    result = compensation
-elif 5 < years:
-    result = 5 * compensation_year + (compensation - 5 * compensation_year) * 30 / 21
-result = payslip.dict.company_id.currency_id.round(payslip.dict._return_math().ceil(result))]]></field>
-            <field name="struct_id" ref="l10n_ae_hr_payroll.uae_employee_payroll_structure"/>
-        </record>
         <record id="uae_end_of_service_provision_salary_rule" model="hr.salary.rule">
             <field name="name">End of Service Provision</field>
-            <field name="category_id" ref="hr_payroll.ALW"/>
+            <field name="category_id" ref="hr_payroll.COMP"/>
             <field name="code">EOSP</field>
-            <field name="appears_on_payslip">True</field>
+            <field name="appears_on_payslip">False</field>
             <field name="sequence">90</field>
             <field name="active">True</field>
             <field name="condition_select">python</field>

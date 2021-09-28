@@ -6,4 +6,3 @@ class HREmployee(models.Model):
 
     end_employment = fields.Boolean()
     end_of_service = fields.Boolean()
-    resigned = fields.Boolean()

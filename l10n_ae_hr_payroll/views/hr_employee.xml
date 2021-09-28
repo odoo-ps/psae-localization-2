@@ -8,7 +8,6 @@
                 <group name="active_group" position="inside">
                     <field name="end_employment"/>
                     <field name="end_of_service"/>
-                    <field name="resigned"/>
                 </group>
             </field>
         </record>
