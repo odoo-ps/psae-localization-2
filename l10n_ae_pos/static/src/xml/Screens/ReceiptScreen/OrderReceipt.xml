@@ -1,11 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
-    <t t-name="OrderReceiptVAT" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
-        <xpath expr="//div[contains(text(), 'Total Taxes')]" position="replace">
-            <div>
-                <t t-if="env.pos.company.country.code == 'AE'">VAT</t>
-                <t t-else="">Total Taxes</t>
-                <span t-esc="env.pos.format_currency(receipt.total_tax)" class="pos-receipt-right-align"/>
+    <t t-name="l10n_ae_pos.OrderReceipt" t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//div[hasclass('pos-receipt')]" position="attributes">
+            <attribute name="t-if">!env.pos.config.two_language_receipt</attribute>
+        </xpath>
+        <xpath expr="//div[hasclass('pos-receipt')]" position="inside">
+            <t t-esc="env.pos.config.two_language_receipt"/>
+        </xpath>
+        <xpath expr="//div[hasclass('pos-receipt')]" position="after">
+            <div class="pos-receipt" t-else="">
+                <div class="pos-receipt-contact">
+                    <t t-if='receipt.company.logo'>
+                        <img class="pos-receipts-logo" t-att-src='receipt.company.logo' alt="Logo"/>
+                        <br/>
+                    </t>
+                    <t>
+                        <div class="company-info"><t t-esc='receipt.company.name'/></div>
+                    </t>
+                    <t t-if='receipt.company.email'>
+                        <div class="company-info"><t t-esc='receipt.company.email' /></div>
+                    </t>
+                    <t t-if='receipt.company.phone'>
+                        <div class="company-info"><t t-esc='receipt.company.phone' /></div>
+                    </t>
+                </div>
+                <br/>
+                <br/>
+                <div class="pos-receipt-center-align" id="receipt_title">
+                    <div>
+                        <span><t t-esc="env.pos.translate('Tax Invoice', env.pos.lang_1)"/></span>
+                    </div>
+                    <div>
+                        <span><t t-esc="env.pos.translate('Tax Invoice', env.pos.lang_2)"/></span>
+                    </div>
+                </div>
+                <br/>
+                <div class="separator-dash"/>
+                <br/>
+                <div>
+                    <t t-set='date_split' t-value='receipt.date.localestring.split(" ")'/>
+                    <span class="pos-receipt-left-align"><t t-esc='date_split[1]'/></span>
+                    <span class="pos-receipt-right-align"><t t-esc='date_split[0]'/></span>
+                </div>
+                <div class="separator-dash"/>
+                <table class="table width-100">
+                    <tbody class="receipt-info-body">
+                        <tr>
+                            <td class="align-left"><t t-esc="env.pos.translate('Invoice No', env.pos.lang_1)"/>:</td>
+                            <td class="align-center"><t t-esc="receipt.name.split(' ')[1]"/></td>
+                            <td class="align-right"> :<t t-esc="env.pos.translate('Invoice No', env.pos.lang_2)"/> </td>
+                        </tr>
+                        <tr t-if='receipt.company.vat'>
+                            <td class="align-left"><t t-esc="env.pos.translate(receipt.company.vat_label, env.pos.lang_1)"/>:</td>
+                            <td class="align-center"><t t-esc="receipt.company.vat"/></td>
+                            <td class="align-right"> :<t t-esc="env.pos.translate(receipt.company.vat_label, env.pos.lang_2)"/> </td>
+                        </tr>
+                        <tr t-if="receipt.cashier">
+                            <td class="align-left"><t t-esc="env.pos.translate('Printed by', env.pos.lang_1)"/>:</td>
+                            <td class="align-center"><t t-esc="receipt.cashier"/></td>
+                            <td class="align-right"> :<t t-esc="env.pos.translate('Printed by', env.pos.lang_2)"/></td>
+                        </tr>
+                        <tr t-if="receipt.client">
+                            <td class="align-left"><t t-esc="env.pos.translate('Cust Name', env.pos.lang_1)"/> :</td>
+                            <td class="align-center"><t t-esc="receipt.client.name"/></td>
+                            <td class="align-right"> :<t t-esc="env.pos.translate('Cust Name', env.pos.lang_2)"/></td>
+                        </tr>
+                        <tr class="separator-dash"/>
+                    </tbody>
+                </table>
+                <table class="table table-receipt">
+                    <thead class="separator-dash">
+                        <tr>
+                            <td class="col-product" id="header_descr_1"><t t-esc="env.pos.translate('Description', env.pos.lang_1)"/></td>
+                            <td class="center-10" id="header_qty_1"><t t-esc="env.pos.translate('Qty', env.pos.lang_1)"/></td>
+                            <td class="center-20" id="header_price_1"><t t-esc="env.pos.translate('Price', env.pos.lang_1)"/></td>
+                            <td class="center-20" id="header_price_1"><t t-esc="env.pos.translate('VAT', env.pos.lang_1)"/></td>
+                            <td class="center-20" id="header_total_1"><t t-esc="env.pos.translate('Total', env.pos.lang_1)"/></td>
+                        </tr>
+                        <tr>
+                            <td class="col-product" id="header_descr_2"><t t-esc="env.pos.translate('Description', env.pos.lang_2)"/></td>
+                            <td class="center-10" id="header_qty_2"><t t-esc="env.pos.translate('Qty', env.pos.lang_2)"/></td>
+                            <td class="center-20" id="header_price_2"><t t-esc="env.pos.translate('Price', env.pos.lang_2)"/></td>
+                            <td class="center-20" id="header_price_2"><t t-esc="env.pos.translate('VAT', env.pos.lang_2)"/></td>
+                            <td class="center-20" id="header_total_2"><t t-esc="env.pos.translate('Total', env.pos.lang_2)"/></td>
+                        </tr>
+                        <br/>
+                    </thead>
+                    <br/>
+                    <tbody>
+                        <t t-foreach='orderlines' t-as='line' t-key="line_index">
+                            <tr>
+                                <td class="col-product">
+                                    <t t-esc="line.get_product().display_name"/>
+                                </td>
+                                <td class="center-10" id="row_qty"><t t-esc="Math.round(line.quantity * Math.pow(10, env.pos.dp['Product Unit of Measure'])) / Math.pow(10, env.pos.dp['Product Unit of Measure'])"/></td>
+                                <td class="center-20" id="row_price"><t t-esc='env.pos.format_currency_no_symbol(line.price)'/></td>
+                                <td class="center-20" id="row_total"><t t-esc='env.pos.format_currency_no_symbol(line.get_price_with_tax() - line.price_without_tax)'/></td>
+                                <td class="center-20" id="row_total"><t t-esc='env.pos.format_currency_no_symbol(line.get_price_with_tax())'/></td>
+                            </tr>
+                        </t>
+                        <tr class="separator-dash"/>
+                    </tbody>
+                </table>
+                <table class="table width-100">
+                    <tbody class="receipt-info-body">
+                        <tr>
+                            <td class="width-33 align-left" id="total_receipt_1"><t t-esc="env.pos.translate('Total', env.pos.lang_1)"/>:</td>
+                            <td class="width-33 align-center"><t t-esc='env.pos.format_currency(receipt.subtotal)'/></td>
+                            <td class="width-33 align-right" id="total_receipt_2">: <t t-esc="env.pos.translate('Total', env.pos.lang_2)"/></td>
+                        </tr>
+                        <tr>
+                            <td class="width-33 align-left"><t t-esc="env.pos.translate('Discount', env.pos.lang_1)"/>:</td>
+                            <td class="width-33 align-center"><t t-esc='env.pos.format_currency(receipt.total_discount)'/></td>
+                            <td class="width-33 align-right">: <t t-esc="env.pos.translate('Discount', env.pos.lang_2)"/></td>
+                        </tr>
+                        <tr>
+                            <td class="width-33 align-left" id="total_vat_1"><t t-esc="env.pos.translate('VAT Amount', env.pos.lang_1)"/>:</td>
+                            <td class="width-33 align-center"><t t-esc='env.pos.format_currency(receipt.total_tax)'/></td>
+                            <td class="width-33 align-right" id="total_vat_2">: <t t-esc="env.pos.translate('VAT Amount', env.pos.lang_2)"/></td>
+                        </tr>
+                        <tr>
+                            <td class="width-33 align-left" id="total_due_1"><t t-esc="env.pos.translate('Net Amount', env.pos.lang_1)"/>:</td>
+                            <td class="width-33 align-center"><t t-esc='env.pos.format_currency(receipt.total_with_tax)'/></td>
+                            <td class="width-33 align-right" id="total_due_2">: <t t-esc="env.pos.translate('Net Amount', env.pos.lang_2)"/></td>
+                        </tr>
+                        <br/>
+                        <tr>
+                            <td class="width-33 align-left"><t t-esc="env.pos.translate('Paid', env.pos.lang_1)"/>:</td>
+                            <td class="width-33 align-center"><t t-esc='env.pos.format_currency(receipt.total_paid)'/></td>
+                            <td class="width-33 align-right">: <t t-esc="env.pos.translate('Paid', env.pos.lang_2)"/></td>
+                        </tr>
+                        <tr>
+                            <td class="width-33 align-left"><t t-esc="env.pos.translate('Change', env.pos.lang_1)"/>:</td>
+                            <td class="width-33 align-center"><t t-esc='env.pos.format_currency(receipt.change)'/></td>
+                            <td class="width-33 align-right">: <t t-esc="env.pos.translate('Change', env.pos.lang_2)"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="separator-dash margin-bottom-1"/>
+                <div class="receipt-size"><t t-esc="env.pos.translate('Thank you for your visit', env.pos.lang_2)"/></div>
+                <div class="receipt-size"><t t-esc="env.pos.translate('Thank you for your visit', env.pos.lang_1)"/></div>
             </div>
         </xpath>
     </t>

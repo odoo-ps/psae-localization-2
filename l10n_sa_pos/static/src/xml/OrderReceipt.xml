@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension" owl="1">
+        <xpath expr="//img[hasclass('pos-receipts-logo')]" position="after">
+            <div t-if="receipt.qr_code" id="qrcode" class="qr-code-sa"/>
+        </xpath>
+        <xpath expr="//div[@id='receipt_title']" position="replace">
+            <div>
+                <span><t t-esc="env.pos.translate('Simplified Tax Invoice', env.pos.lang_1)"/></span>
+            </div>
+            <div>
+                <span><t t-esc="env.pos.translate('Simplified Tax Invoice', env.pos.lang_2)"/></span>
+            </div>
+        </xpath>
+        <xpath expr="//td[@id='header_qty_1']" position="before">
+            <td class="center-25"><t t-esc="env.pos.translate('Unit Price', env.pos.lang_1)"/></td>
+        </xpath>
+        <xpath expr="//td[@id='header_qty_2']" position="before">
+            <td class="center-25"><t t-esc="env.pos.translate('Unit Price', env.pos.lang_2)"/></td>
+        </xpath>
+        <xpath expr="//td[@id='header_price_1']" position="replace"/>
+        <xpath expr="//td[@id='header_price_2']" position="replace"/>
+        <xpath expr="//td[@id='header_total_1']/t" position="attributes">
+            <attribute name="t-esc">env.pos.translate('Item Subtotal (Including VAT)', env.pos.lang_1)</attribute>
+        </xpath>
+        <xpath expr="//td[@id='header_total_2']/t" position="attributes">
+            <attribute name="t-esc">env.pos.translate('Item Subtotal (Including VAT)', env.pos.lang_2)</attribute>
+        </xpath>
+        <xpath expr="//td[@id='row_qty']" position="before">
+            <td class="center-25"><t t-esc='env.pos.format_currency_no_symbol(line.price)'/></td>
+        </xpath>
+        <xpath expr="//td[@id='row_price']" position="replace"/>
+        <xpath expr="//td[@id='row_qty']/../.." position="inside">
+            <tr>
+                <td class="col-product"><t t-esc="line.get_product().arabic_name"/></td>
+                <td class="center-25"></td>
+                <td class="center-10"></td>
+                <td class="center-25"></td>
+            </tr>
+        </xpath>
+        <xpath expr="//td[@id='total_receipt_1']/t" position="replace">
+            <t t-esc="env.pos.translate('Total Taxable Amount (Excluding VAT)', env.pos.lang_1)"/>
+        </xpath>
+        <xpath expr="//td[@id='total_receipt_2']/t" position="replace">
+            <t t-esc="env.pos.translate('Total Taxable Amount (Excluding VAT)', env.pos.lang_2)"/>
+        </xpath>
+        <xpath expr="//td[@id='total_vat_1']/t" position="replace">
+            <t t-esc="env.pos.translate('Total VAT', env.pos.lang_1)"/>
+        </xpath>
+        <xpath expr="//td[@id='total_vat_2']/t" position="replace">
+            <t t-esc="env.pos.translate('Total VAT', env.pos.lang_2)"/>
+        </xpath>
+        <xpath expr="//td[@id='total_due_1']/t" position="replace">
+            <t t-esc="env.pos.translate('Total Amount Due', env.pos.lang_1)"/>
+        </xpath>
+        <xpath expr="//td[@id='total_due_2']/t" position="replace">
+            <t t-esc="env.pos.translate('Total Amount Due', env.pos.lang_2)"/>
+        </xpath>
+    </t>
+</templates>
