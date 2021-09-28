@@ -15,23 +15,25 @@
                             <span class="fa fa-lg fa-building-o" title="Values set here are company-specific."
                                   aria-label="Values set here are company-specific."
                                   role="img"/>
-                            <div class="text-muted">
-                                Choose primary language for the report
+                            <div attrs="{'invisible':[('secondary_language','=',False)]}">
+                                <div class="text-muted">
+                                    Choose primary language for the report
+                                </div>
+                                <div>
+                                    <field name="primary_language_code"/>
+                                </div>
+                                <div class="text-muted">
+                                    Choose secondary language for the reports
+                                </div>
+                                <div>
+                                    <field name="secondary_language_code"/>
+                                </div>
+                                <span class="o_form_label">Secondary Report Translation</span>
+                                <div class="text-muted">
+                                    Choose secondary language text for the reports
+                                </div>
+                                <field name="invoice_text"/>
                             </div>
-                            <div>
-                            <field  name="primary_language_code"  attrs="{'readonly':[('secondary_language','=',False)]}"  />
-                            </div>
-                            <div class="text-muted">
-                                Choose secondary language for the reports
-                            </div>
-                            <div>
-                            <field  name="secondary_language_code"  attrs="{'readonly':[('secondary_language','=',False)]}"  />
-                            </div>
-                            <span class="o_form_label">Secondary Report Translation</span>
-                            <div class="text-muted">
-                                Choose secondary language text for the reports
-                            </div>
-                            <field  name="invoice_text"  attrs="{'readonly':[('secondary_language','=',False)]}"  />
                         </div>
                     </div>
                 </xpath>

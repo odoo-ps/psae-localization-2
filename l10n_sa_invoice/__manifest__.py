@@ -8,7 +8,7 @@
     'description': """
     Dual Language Invoice for Saudi Arabia
 """,
-    'depends': ['account', 'arabic_friendly_fonts'],
+    'depends': ['account', 'l10n_ae_font'],
     'data': [
         'security/ir.model.access.csv',
         'data/report_invoice_lang.xml',
