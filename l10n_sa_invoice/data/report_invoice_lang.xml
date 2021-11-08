@@ -1,7 +1,0 @@
-<odoo>
-    <data>
-        <record id="sa_arabic_invoice" model="report.invoice.lang">
-            <field name="name">SA Arabic Invoice</field>
-        </record>
-    </data>
-</odoo>

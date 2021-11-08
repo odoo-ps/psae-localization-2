@@ -9,62 +9,44 @@ from odoo.exceptions import UserError
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    narration = fields.Text(translate=True)
-    invoice_date = fields.Date(required=True, default=fields.Date.today)
-    delivery_date = fields.Date(string="Delivery Date", required=True, default=fields.Date.today)
-    qr_code_str = fields.Char(compute="_compute_qr_code_str")
-    confirmation_datetime = fields.Datetime(default=False, readonly=True)
+    delivery_date = fields.Date(default=fields.Date.context_today, copy=False)
+    show_delivery_date = fields.Boolean(compute='_get_show_delivery_date')
+    qr_code_str = fields.Char(compute='_compute_qr_code_str')
+    confirmation_datetime = fields.Datetime(default=False, readonly=True, copy=False)
 
-    def _get_name_invoice_report(self):
-        self.ensure_one()
-        if self.company_id.secondary_language and self.company_id.invoice_text:
-            return 'l10n_sa_invoice.ar_invoice'
-        return super()._get_name_invoice_report()
+    @api.depends('company_id.country_id')
+    def _get_show_delivery_date(self):
+        for move in self:
+            move.show_delivery_date = move.company_id.country_id == self.env.ref('base.sa')
 
-    @api.depends("amount_total", "amount_untaxed", "confirmation_datetime", "company_id", "company_id.vat")
+    @api.depends('amount_total', 'amount_untaxed', 'confirmation_datetime', 'company_id', 'company_id.vat')
     def _compute_qr_code_str(self):
+        """ Generate the qr code for Saudi e-invoicing. Specs are available at the following link at page 23
+        https://zatca.gov.sa/ar/E-Invoicing/SystemsDevelopers/Documents/20210528_ZATCA_Electronic_Invoice_Security_Features_Implementation_Standards_vShared.pdf
+        """
+        def get_qr_encoding(tag, field):
+            company_name_byte_array = field.encode('UTF-8')
+            company_name_tag_encoding = tag.to_bytes(length=1, byteorder='big')
+            company_name_length_encoding = len(company_name_byte_array).to_bytes(length=1, byteorder='big')
+            return company_name_tag_encoding + company_name_length_encoding + company_name_byte_array
+
         for record in self:
-            record.qr_code_str = ""
+            record.qr_code_str = ''
             if record.confirmation_datetime and record.company_id.vat:
-                company_name_byte_array = record.company_id.display_name.encode('UTF-8')
-                company_name_tag_encoding = (1).to_bytes(length=1, byteorder='big')
-                company_name_length_encoding = len(company_name_byte_array).to_bytes(length=1, byteorder='big')
-                company_name_enc = company_name_tag_encoding + company_name_length_encoding + company_name_byte_array
+                seller_name_enc = get_qr_encoding(1, record.company_id.display_name)
+                company_vat_enc = get_qr_encoding(2, record.company_id.vat)
+                timestamp_enc = get_qr_encoding(3, record.confirmation_datetime.isoformat())
+                invoice_total_enc = get_qr_encoding(4, str(record.amount_total))
+                total_vat_enc = get_qr_encoding(5, str(record.currency_id.round(record.amount_total - record.amount_untaxed)))
 
-                company_vat_byte_array = record.company_id.vat.encode('UTF-8')
-                company_vat_tag_encoding = (2).to_bytes(length=1, byteorder='big')
-                company_vat_length_encoding = len(company_vat_byte_array).to_bytes(length=1, byteorder='big')
-                company_vat_enc = company_vat_tag_encoding + company_vat_length_encoding + company_vat_byte_array
-
-                timestamp_byte_array = record.confirmation_datetime.isoformat().encode('UTF-8')
-                timestamp_tag_encoding = (3).to_bytes(length=1, byteorder='big')
-                timestamp_length_encoding = len(timestamp_byte_array).to_bytes(length=1, byteorder='big')
-                timestamp_enc = timestamp_tag_encoding + timestamp_length_encoding + timestamp_byte_array
-
-                amount_total_byte_array = str(record.amount_total).encode('UTF-8')
-                amount_total_tag_encoding = (4).to_bytes(length=1, byteorder='big')
-                amount_total_length_encoding = len(amount_total_byte_array).to_bytes(length=1, byteorder='big')
-                amount_total_enc = amount_total_tag_encoding + amount_total_length_encoding + amount_total_byte_array
-
-                total_vat_byte_array = str(
-                    record.currency_id.round(record.amount_total - record.amount_untaxed)).encode(
-                    'UTF-8')
-                total_vat_tag_encoding = (5).to_bytes(length=1, byteorder='big')
-                total_vat_length_encoding = len(total_vat_byte_array).to_bytes(length=1, byteorder='big')
-                total_vat_enc = total_vat_tag_encoding + total_vat_length_encoding + total_vat_byte_array
-
-                record.qr_code_str = base64.b64encode(
-                    company_name_enc + company_vat_enc + timestamp_enc + amount_total_enc + total_vat_enc).decode(
-                    'UTF-8')
-
-    @api.constrains("invoice_date", "delivery_date")
-    def _delivery_date_constraint(self):
-        for record in self:
-            if record.delivery_date < record.invoice_date:
-                raise UserError(
-                    _(f"Delivery Date ({record.delivery_date}) cannot be before Invoice Date ({record.invoice_date})"))
+                str_to_encode = seller_name_enc + company_vat_enc + timestamp_enc + invoice_total_enc + total_vat_enc
+                record.qr_code_str = base64.b64encode(str_to_encode).decode('UTF-8')
 
     def action_post(self):
         for record in self:
-            record.confirmation_datetime = fields.Datetime.now()
-        super(AccountMove, self).action_post()
+            if record.company_id.country_id == self.env.ref('base.sa') and record.delivery_date < record.invoice_date:
+                raise UserError(_('Delivery Date cannot be before Invoice Date'))
+        self.write({
+            'confirmation_datetime': fields.Datetime.now()
+        })
+        return super().action_post()
