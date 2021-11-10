@@ -5,5 +5,13 @@
             <div t-if="receipt.qr_code" id="qrcode" class="pos-receipt-logo" style="width: 128px !important;"/>
             <br/>
         </xpath>
+
+        <xpath expr="//span[@id='title_english']" position="replace">
+            <span id="title_english">Simplified Tax Invoice</span>
+        </xpath>
+
+        <xpath expr="//span[@id='title_arabic']" position="replace">
+            <span id="title_arabic">فاتورة ضريبية مبسطة</span>
+        </xpath>
     </t>
 </templates>

@@ -7,10 +7,10 @@
                 <br/>
                 <br/>
                 <div class="pos-receipt-header">
-                    <span>Tax Invoice</span>
+                    <span id="title_english">Tax Invoice</span>
                 </div>
                 <div class="pos-receipt-header">
-                    <span>الفاتورة الضريبية</span>
+                    <span id="title_arabic">الفاتورة الضريبية</span>
                 </div>
             </t>
         </xpath>
@@ -46,6 +46,13 @@
             <div>
                 Discounts/<t t-if="receipt.is_gcc_country">الخصومات</t>
                 <span t-esc="env.pos.format_currency(receipt.total_discount)" class="pos-receipt-right-align"/>
+            </div>
+        </xpath>
+
+        <xpath expr="//span[@t-esc='env.pos.format_currency(receipt.total_tax)']/.." position="replace">
+            <div>
+                Total Taxes/<t t-if="receipt.is_gcc_country">إجمالي الضرائب</t>
+                <span t-esc="env.pos.format_currency(receipt.total_tax)" class="pos-receipt-right-align"/>
             </div>
         </xpath>
     </t>
