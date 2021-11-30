@@ -17,33 +17,33 @@ _logger = logging.getLogger(__name__)
 class AccountMove(models.Model):
     _inherit = 'account.move'
 
-    eta_invoice_sent = fields.Boolean('Document Sent', copy=False, tracking=True)
-    eta_invoice_signed = fields.Boolean('Document Signed', copy=False, tracking=True)
+    l10n_eg_invoice_sent = fields.Boolean('Document Sent', copy=False, tracking=True)
+    l10n_eg_invoice_signed = fields.Boolean('Document Signed', copy=False, tracking=True)
 
-    eta_long_id = fields.Char('ETA Long ID', copy=False)
-    eta_internal_id = fields.Char('ETA Internal ID', copy=False)
-    eta_hash_key = fields.Char('ETA Hash Key', copy=False)
-    eta_uuid = fields.Char(string='Document UUID', copy=False)
-    eta_submission_id = fields.Char(string='Submission ID', copy=False)
-    eta_document_name = fields.Char()
-    signature_type = fields.Char(string='Signature Type', copy=False)
+    l10n_eg_long_id = fields.Char('ETA Long ID', copy=False)
+    l10n_eg_internal_id = fields.Char('ETA Internal ID', copy=False)
+    l10n_eg_hash_key = fields.Char('ETA Hash Key', copy=False)
+    l10n_eg_uuid = fields.Char(string='Document UUID', copy=False)
+    l10n_eg_submission_id = fields.Char(string='Submission ID', copy=False)
+    l10n_eg_document_name = fields.Char('Document Name')
+    l10n_eg_signature_type = fields.Char(string='Signature Type', copy=False)
 
-    eta_pdf = fields.Binary(string='ETA PDF Document', copy=False)
+    l10n_eg_pdf = fields.Binary(string='ETA PDF Document', copy=False)
 
-    eta_state = fields.Selection([('submitted', 'Submitted'),
-                                  ('valid', 'Valid'),
-                                  ('invalid', 'Invalid'),
-                                  ('rejected', 'Rejected'),
-                                  ('cancelled', 'Cancelled')], string='ETA Status', copy=False, tracking=True)
+    l10n_eg_state = fields.Selection([('submitted', 'Submitted'),
+                                      ('valid', 'Valid'),
+                                      ('invalid', 'Invalid'),
+                                      ('rejected', 'Rejected'),
+                                      ('cancelled', 'Cancelled')], string='ETA Status', copy=False, tracking=True)
 
-    eta_signature_data = fields.Text(copy=False)
+    l10n_eg_signature_data = fields.Text('Signature Data', copy=False)
 
-    posted_date = fields.Datetime(copy=False)
+    l10n_eg_posted_date = fields.Datetime('Posted Date', copy=False)
 
     def action_post(self):
         res = super().action_post()
-        self.filtered(lambda r: not r.posted_date and r.state == 'posted').write({
-            'posted_date': fields.Datetime.now()
+        self.filtered(lambda r: not r.l10n_eg_posted_date and r.state == 'posted').write({
+            'l10n_eg_posted_date': fields.Datetime.now()
         })
         return res
 
@@ -61,8 +61,8 @@ class AccountMove(models.Model):
 
     def _get_einvoice_token(self):
         token = False
-        user = self.company_id.eta_client_identifier
-        secret = self.company_id.eta_client_secret_1 or self.company_id.eta_client_secret_2
+        user = self.company_id.l10n_eg_client_identifier
+        secret = self.company_id.l10n_eg_client_secret_1 or self.company_id.l10n_eg_client_secret_2
         access = '%s:%s' % (user, secret)
         user_and_pass = b64encode(bytes(access, encoding='utf8')).decode("ascii")
         token_domain = self._get_eta_token_domain()
@@ -85,8 +85,8 @@ class AccountMove(models.Model):
         token = self._get_einvoice_token()
         uuid = self._action_send_eta_invoice(token)
         if uuid:
-            self.eta_state = False
-            self.eta_pdf = False
+            self.l10n_eg_state = False
+            self.l10n_eg_pdf = False
         return True
 
     def _action_send_eta_invoice(self, token):
@@ -116,13 +116,13 @@ class AccountMove(models.Model):
 
                 if submission_data.get('submissionId') and not submission_data.get('submissionId') is None:
                     if submission_data.get('acceptedDocuments'):
-                        self.eta_invoice_sent = True
-                        self.eta_submission_id = submission_data.get('submissionId')
+                        self.l10n_eg_invoice_sent = True
+                        self.l10n_eg_submission_id = submission_data.get('submissionId')
                         uuid = submission_data.get('acceptedDocuments')[0].get('uuid')
-                        self.eta_uuid = uuid
-                        self.eta_long_id = submission_data.get('acceptedDocuments')[0].get('longId')
-                        self.eta_internal_id = submission_data.get('acceptedDocuments')[0].get('internalId')
-                        self.eta_hash_key = submission_data.get('acceptedDocuments')[0].get('hashKey')
+                        self.l10n_eg_uuid = uuid
+                        self.l10n_eg_long_id = submission_data.get('acceptedDocuments')[0].get('longId')
+                        self.l10n_eg_internal_id = submission_data.get('acceptedDocuments')[0].get('internalId')
+                        self.l10n_eg_hash_key = submission_data.get('acceptedDocuments')[0].get('hashKey')
                         return uuid
 
             return False
@@ -212,22 +212,22 @@ class AccountMove(models.Model):
         return
 
     def action_cancel_eta_invoice(self):
-        uuid = self.eta_uuid
+        uuid = self.l10n_eg_uuid
         invoice = self._cancel_eta_invoice(uuid)
         if invoice is dict and invoice.get('error', False):
             self._error_handeling(invoice.get('error'), action_code='1004')
         else:
-            self.eta_state = "cancelled"
+            self.l10n_eg_state = "cancelled"
 
     def action_get_eta_invoice_state(self, token=False, eta_uuid=False):
         uuid = eta_uuid
         if not eta_uuid:
-            uuid = self.eta_uuid
+            uuid = self.l10n_eg_uuid
         invoice = self._get_eta_invoice(uuid, token)
         if invoice.get('error', False):
             self._error_handeling(invoice.get('error'), action_code='1005')
         else:
-            self.eta_state = invoice.get('status', False) and invoice['status'].lower()
+            self.l10n_eg_state = invoice.get('status', False) and invoice['status'].lower()
 
         if invoice and 'validationResults' in invoice and isinstance(invoice['validationResults'], dict):
             self._set_validation(invoice['validationResults'])
@@ -239,21 +239,21 @@ class AccountMove(models.Model):
             'res_model': 'account.move',
             'view_type': 'form',
             'view_mode': 'form',
-            'view_id': self.env.ref('l10_eg_invoice.view_invoice_update_uuid').id,
+            'view_id': self.env.ref('l10n_eg_invoice.view_invoice_update_uuid').id,
             'target': 'new',
             'res_id': self.id
         }
 
     def action_get_eta_invoice_pdf(self, token=False, uuid=False):
         if not uuid:
-            uuid = self.eta_uuid
+            uuid = self.l10n_eg_uuid
         invoice = self._get_eta_invoice_pdf(uuid, token)
         if isinstance(invoice, dict) and invoice.get('error', False):
             _logger.warning('PDF Content Error:  %s.' % invoice.get('error'))
         else:
             pdf = base64.b64encode(invoice)
-            self.eta_pdf = pdf
-            self.eta_document_name = "%s.pdf" % self.name.replace('/', '_')
+            self.l10n_eg_pdf = pdf
+            self.l10n_eg_document_name = "%s.pdf" % self.name.replace('/', '_')
 
     def _error_handeling(self, error_msg, action_code='1000'):
         _logger.warning('ERROR: %s.' % error_msg)
@@ -283,7 +283,7 @@ class AccountMove(models.Model):
             "documentType": "I" if self.move_type == 'out_invoice' else "c" if self.move_type == 'out_refund' else "d" if self.move_type == 'in_refund' else "",
             "documentTypeVersion": "1.0",
             "dateTimeIssued": date_string,
-            "taxpayerActivityCode": self.company_id.partner_id.eta_activity_type,
+            "taxpayerActivityCode": self.company_id.partner_id.l10n_eg_activity_type,
             "internalID": self.name,
             "purchaseOrderReference": "",
             "purchaseOrderDescription": "",
@@ -294,7 +294,7 @@ class AccountMove(models.Model):
         if self.move_type in ['out_refund', 'in_refund']:
             eta_invoice.update({
                 'references': [
-                    self.reversed_entry_id.eta_uuid] if self.move_type == 'out_refund' and self.reversed_entry_id and self.reversed_entry_id.eta_uuid else []
+                    self.reversed_entry_id.l10n_eg_uuid] if self.move_type == 'out_refund' and self.reversed_entry_id and self.reversed_entry_id.l10n_eg_uuid else []
             })
         eta_invoice.update({
             "payment": self._prepare_payment_data(),
@@ -304,7 +304,7 @@ class AccountMove(models.Model):
             "totalSalesAmount": self._get_amount(total_sale_amount),
             "netAmount": self._get_amount(self.amount_untaxed),
             "taxTotals": [{
-                "taxType": self.env['account.tax.group'].browse(tax[6]).eta_tax_code,
+                "taxType": self.env['account.tax.group'].browse(tax[6]).l10n_eg_tax_code,
                 "amount": self._get_amount(abs(tax[1])) or 0,
             } for tax in self.amount_by_group],
             "totalAmount": self._get_amount(self.amount_total),
@@ -324,7 +324,7 @@ class AccountMove(models.Model):
         company_partner = self.company_id.partner_id
         issuer = {
             "address": {
-                "branchID": self.company_id.eta_branch_identifier,
+                "branchID": self.company_id.l10n_eg_branch_identifier,
                 "country": company_partner.country_id.code,
                 "governate": company_partner.state_id.name,
                 "regionCity": company_partner.city,
@@ -337,7 +337,7 @@ class AccountMove(models.Model):
                 "additionalInformation": company_partner.additional_information or "",
             },
             "type": "B",
-            "id": company_partner.eta_code,
+            "id": company_partner.l10n_eg_code,
             "name": self.company_id.name,
         }
         return issuer
@@ -358,7 +358,7 @@ class AccountMove(models.Model):
                 "additionalInformation": partner.additional_information or "",
             },
             "type": "B" if partner.company_type == 'company' and partner.country_id.code == 'EG' else "P" if partner.company_type == 'person' and partner.country_id.code == 'EG' else "F",
-            "id": partner.eta_code or partner.vat if partner.company_type == 'company' else partner.national_identifier or partner.vat,
+            "id": partner.l10n_eg_code or partner.vat if partner.company_type == 'company' else partner.national_identifier or partner.vat,
             "name": partner.name,
         }
         return receiver
@@ -405,7 +405,7 @@ class AccountMove(models.Model):
                 "description": line.name,
                 "itemType": line.product_id.item_type if line.product_id.item_type else "GS1",
                 "itemCode": line.product_id.item_code,
-                "unitType": line.product_uom_id.eta_unit_code,
+                "unitType": line.product_uom_id.l10n_eg_unit_code,
                 "quantity": line.quantity,
                 "internalCode": line.product_id.default_code or "",
                 "salesTotal": self._get_amount(line.quantity * line.price_unit),
@@ -428,9 +428,9 @@ class AccountMove(models.Model):
                 },
                 "taxableItems": [
                     {
-                        "taxType": tax.tax_group_id.eta_tax_code,
+                        "taxType": tax.tax_group_id.l10n_eg_tax_code,
                         "amount": self._get_amount(abs((tax.amount / 100.0) * line.price_subtotal)) or 0,
-                        "subType": tax.eta_tax_code,
+                        "subType": tax.l10n_eg_tax_code,
                         "rate": self._get_amount(abs(tax.amount)) or 0,
                     } for tax in line.tax_ids
                 ],

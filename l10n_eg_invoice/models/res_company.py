@@ -9,7 +9,7 @@ class ResCompany(models.Model):
     _name = 'res.company'
     _inherit = ['res.company', 'eta.mixin']
 
-    eta_client_identifier = fields.Char('ETA Client ID')
-    eta_client_secret_1 = fields.Char()
-    eta_client_secret_2 = fields.Char()
-    eta_branch_identifier = fields.Char('ETA Branch ID')
+    l10n_eg_client_identifier = fields.Char('ETA Client ID')
+    l10n_eg_client_secret_1 = fields.Char()
+    l10n_eg_client_secret_2 = fields.Char()
+    l10n_eg_branch_identifier = fields.Char('ETA Branch ID')

@@ -9,4 +9,4 @@ class ResPartner(models.Model):
     _name = 'res.partner'
     _inherit = ['res.partner', 'eta.mixin']
 
-    national_identifier = fields.Char(string='National ID')
+    l10n_eg_national_identifier = fields.Char(string='National ID')

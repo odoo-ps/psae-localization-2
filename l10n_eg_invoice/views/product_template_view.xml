@@ -6,8 +6,8 @@
             <field name="inherit_id" ref="product.product_template_form_view"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='categ_id']" position="after">
-                    <field name="eta_item_type"/>
-                    <field name="eta_item_code"/>
+                    <field name="l10n_eg_item_type"/>
+                    <field name="l10n_eg_item_code"/>
                 </xpath>
             </field>
         </record>

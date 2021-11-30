@@ -6,7 +6,7 @@
             <field name="inherit_id" ref="account.view_tax_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="after">
-                    <field name="eta_tax_code"/>
+                    <field name="l10n_eg_tax_code" attrs="{'invisible': [('country_code', '!=', 'EG')]}"/>
                 </xpath>
             </field>
         </record>

@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <record id="view_company_form_inherit" model="ir.ui.view">
+            <field name="name">view_company_form_inherit</field>
+            <field name="model">res.company</field>
+            <field name="inherit_id" ref="base.view_company_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="ETA Configuration" attrs="{'invisible': [('country_code', '!=', 'EG')]}">
+                        <group>
+                            <field name="l10n_eg_client_identifier"/>
+                            <field name="l10n_eg_client_secret_1"/>
+                            <field name="l10n_eg_client_secret_2"/>
+                            <field name="l10n_eg_code"/>
+                            <field name="l10n_eg_activity_type"/>
+                            <field name="l10n_eg_branch_identifier"/>
+                        </group>
+                        <group string="Additional Address Details">
+                            <group>
+                                <field name="l10n_eg_building_no"/>
+                                <field name="l10n_eg_floor"/>
+                                <field name="l10n_eg_room"/>
+                                <field name="l10n_eg_landmark"/>
+                                <field name="l10n_eg_additional_information"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

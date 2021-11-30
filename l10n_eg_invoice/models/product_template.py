@@ -8,7 +8,7 @@ from odoo import models, fields, api
 class ProductTemplate(models.Model):
     _inherit = 'product.template'
 
-    eta_item_type = fields.Selection([('GS1', 'GS1'), ('EGS', 'EGS')],
+    l10n_eg_item_type = fields.Selection([('GS1', 'GS1'), ('EGS', 'EGS')],
                                      help='The type of item according to egyptian tax authority and default is GS1',
                                      default='GS1')
-    eta_item_code = fields.Char(help='This is the code of item according to egyptian tax authority')
+    l10n_eg_item_code = fields.Char(help='This is the code of item according to egyptian tax authority')
