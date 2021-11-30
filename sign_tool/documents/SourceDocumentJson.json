@@ -1,0 +1,111 @@
+{
+    "issuer": {
+        "address": {
+            "branchID": "0",
+            "country": "EG",
+            "governate": "Cairo",
+            "regionCity": "New Cairo",
+            "street": "250 Executive Park Blvd",
+            "buildingNumber": "7323",
+            "postalCode": "94134",
+            "floor": "1",
+            "room": "2",
+            "landmark": "2",
+            "additionalInformation": "No info here"
+        },
+        "type": "B",
+        "id": "207409862",
+        "name": "My Company (San Francisco)"
+    },
+    "receiver": {
+        "address": {
+            "country": "EG",
+            "governate": "Cairo",
+            "regionCity": "Nasr City",
+            "street": "77 Santa Barbara Rd",
+            "buildingNumber": "155",
+            "postalCode": "99936",
+            "floor": "2",
+            "room": "6",
+            "landmark": "6",
+            "additionalInformation": "info"
+        },
+        "type": "B",
+        "id": "313717919",
+        "name": "Deco Addict"
+    },
+    "documentType": "I",
+    "documentTypeVersion": "1.0",
+    "dateTimeIssued": "2021-03-31T20:59:37Z",
+    "taxpayerActivityCode": "2220",
+    "internalID": "23156",
+    "purchaseOrderReference": "",
+    "purchaseOrderDescription": "",
+    "salesOrderReference": "INV002",
+    "salesOrderDescription": "",
+    "proformaInvoiceNumber": "",
+    "payment": {
+        "bankName": "CIB",
+        "bankAddress": "Mohamed Naguib",
+        "bankAccountNo": "8756465121548",
+        "bankAccountIBAN": "",
+        "swiftCode": "",
+        "terms": ""
+    },
+    "delivery": {
+        "approach": "",
+        "packaging": "",
+        "dateValidity": "",
+        "exportPort": "",
+        "countryOfOrigin": "EG",
+        "grossWeight": 0.0,
+        "netWeight": 0.0,
+        "terms": ""
+    },
+    "invoiceLines": [
+        {
+            "description": "This item is",
+            "itemType": "GS1",
+            "itemCode": "6225000435117",
+            "unitType": "C62",
+            "quantity": 1.0,
+            "internalCode": "123",
+            "salesTotal": 100.0,
+            "total": 114.0,
+            "valueDifference": 0,
+            "totalTaxableFees": 0,
+            "netTotal": 100.0,
+            "itemsDiscount": 0,
+            "unitValue": {
+                "currencySold": "EGP",
+                "amountEGP": 100.0,
+                "amountSold": 0.0,
+                "currencyExchangeRate": 0.0
+            },
+            "discount": {
+                "rate": 0.0,
+                "amount": 0.0
+            },
+            "taxableItems": [
+                {
+                    "taxType": "T1",
+                    "amount": 14.0,
+                    "subType": "V009",
+                    "rate": 14.0
+                }
+            ]
+        }
+    ],
+    "totalDiscountAmount": 0.0,
+    "totalSalesAmount": 100.0,
+    "netAmount": 100.0,
+    "taxTotals": [
+        {
+            "taxType": "T1",
+            "amount": 14.0
+        }
+    ],
+    "totalAmount": 114.0,
+    "extraDiscountAmount": 0,
+    "totalItemsDiscountAmount": 0
+}
