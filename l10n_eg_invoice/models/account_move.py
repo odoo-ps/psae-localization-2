@@ -4,12 +4,15 @@
 
 import base64
 import json
+from collections import defaultdict
 
 from odoo import models, fields, api, _
 import requests
 from odoo.exceptions import ValidationError
 from base64 import b64encode
 import logging
+
+from odoo.tools import formatLang
 
 _logger = logging.getLogger(__name__)
 
@@ -39,6 +42,65 @@ class AccountMove(models.Model):
     l10n_eg_signature_data = fields.Text('Signature Data', copy=False)
 
     l10n_eg_posted_date = fields.Datetime('Posted Date', copy=False)
+    l10n_eg_amount_by_group = fields.Binary(string="Tax amount by group",
+                                            compute='_compute_invoice_taxes_by_group_l10n_eg',
+                                            help='Edit Tax amounts if you encounter rounding issues.')
+
+    @api.depends('line_ids.price_subtotal', 'line_ids.tax_base_amount', 'line_ids.tax_line_id', 'partner_id', 'currency_id')
+    def _compute_invoice_taxes_by_group_l10n_eg(self):
+        for move in self:
+
+            # Not working on something else than invoices.
+            if not move.is_invoice(include_receipts=True):
+                move.l10n_eg_amount_by_group = []
+                continue
+
+            lang_env = move.with_context(lang=move.partner_id.lang).env
+            balance_multiplicator = -1 if move.is_inbound() else 1
+
+            tax_lines = move.line_ids.filtered('tax_line_id')
+            base_lines = move.line_ids.filtered('tax_ids')
+
+            tax_group_mapping = defaultdict(lambda: {
+                'base_lines': set(),
+                'base_amount': 0.0,
+                'tax_amount': 0.0,
+            })
+
+            # Compute base amounts.
+            for base_line in base_lines:
+                base_amount = balance_multiplicator * (base_line.amount_currency if base_line.currency_id else base_line.balance)
+
+                for tax in base_line.tax_ids.flatten_taxes_hierarchy():
+
+                    if base_line.tax_line_id.tax_group_id == tax.tax_group_id:
+                        continue
+
+                    tax_group_vals = tax_group_mapping[tax.tax_group_id]
+                    if base_line not in tax_group_vals['base_lines']:
+                        tax_group_vals['base_amount'] += base_amount
+                        tax_group_vals['base_lines'].add(base_line)
+
+            # Compute tax amounts.
+            for tax_line in tax_lines:
+                tax_amount = balance_multiplicator * (tax_line.amount_currency if tax_line.currency_id else tax_line.balance)
+                tax_group_vals = tax_group_mapping[tax_line.tax_line_id.tax_group_id]
+                tax_group_vals['tax_amount'] += tax_amount
+
+            tax_groups = sorted(tax_group_mapping.keys(), key=lambda x: x.sequence)
+            l10n_eg_amount_by_group = []
+            for tax_group in tax_groups:
+                tax_group_vals = tax_group_mapping[tax_group]
+                l10n_eg_amount_by_group.append((
+                    tax_group.name,
+                    tax_group_vals['tax_amount'],
+                    tax_group_vals['base_amount'],
+                    formatLang(lang_env, tax_group_vals['tax_amount'], currency_obj=move.currency_id),
+                    formatLang(lang_env, tax_group_vals['base_amount'], currency_obj=move.currency_id),
+                    len(tax_group_mapping),
+                    tax_group.id
+                ))
+            move.l10n_eg_amount_by_group = l10n_eg_amount_by_group
 
     def action_post(self):
         res = super().action_post()
@@ -209,7 +271,14 @@ class AccountMove(models.Model):
 
     def action_post_sign_invoice(self):
         # TODO return a wizard with the json invoice
-        return
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.client',
+            'tag': 'action_post_sign_invoice',
+            'params': {
+                'invoice_id': self.id,
+            }
+        }
 
     def action_cancel_eta_invoice(self):
         uuid = self.l10n_eg_uuid
@@ -276,7 +345,7 @@ class AccountMove(models.Model):
     def _prepare_eta_invoice(self):
         total_discount = sum([(line.discount / 100.0) * line.quantity * line.price_unit for line in self.invoice_line_ids])
         total_sale_amount = sum([(line.quantity * line.price_unit) for line in self.invoice_line_ids])
-        date_string = self.issued_date.strftime('%Y-%m-%dT%H:%M:%SZ')
+        date_string = self.l10n_eg_posted_date.strftime('%Y-%m-%dT%H:%M:%SZ')
         eta_invoice = {
             "issuer": self._prepare_issuer_data(),
             "receiver": self._prepare_receiver_data(),
@@ -306,14 +375,14 @@ class AccountMove(models.Model):
             "taxTotals": [{
                 "taxType": self.env['account.tax.group'].browse(tax[6]).l10n_eg_tax_code,
                 "amount": self._get_amount(abs(tax[1])) or 0,
-            } for tax in self.amount_by_group],
+            } for tax in self.l10n_eg_amount_by_group],
             "totalAmount": self._get_amount(self.amount_total),
             "extraDiscountAmount": 0,
             "totalItemsDiscountAmount": 0,
             "signatures": [
                 {
                     "signatureType": "I",
-                    "value": self.signature_value
+                    "value": self.l10n_eg_signature_data
                 }
             ]
         })
@@ -329,12 +398,12 @@ class AccountMove(models.Model):
                 "governate": company_partner.state_id.name,
                 "regionCity": company_partner.city,
                 "street": company_partner.street,
-                "buildingNumber": company_partner.building_no,
+                "buildingNumber": company_partner.l10n_eg_building_no,
                 "postalCode": company_partner.zip or "",
-                "floor": company_partner.floor or "",
-                "room": company_partner.room or "",
-                "landmark": company_partner.landmark or "",
-                "additionalInformation": company_partner.additional_information or "",
+                "floor": company_partner.l10n_eg_floor or "",
+                "room": company_partner.l10n_eg_room or "",
+                "landmark": company_partner.l10n_eg_landmark or "",
+                "additionalInformation": company_partner.l10n_eg_additional_information or "",
             },
             "type": "B",
             "id": company_partner.l10n_eg_code,
@@ -350,15 +419,15 @@ class AccountMove(models.Model):
                 "governate": partner.state_id.name,
                 "regionCity": partner.city,
                 "street": partner.street,
-                "buildingNumber": partner.building_no,
+                "buildingNumber": partner.l10n_eg_building_no,
                 "postalCode": partner.zip or "",
-                "floor": partner.floor or "",
-                "room": partner.room or "",
-                "landmark": partner.landmark or "",
-                "additionalInformation": partner.additional_information or "",
+                "floor": partner.l10n_eg_floor or "",
+                "room": partner.l10n_eg_room or "",
+                "landmark": partner.l10n_eg_landmark or "",
+                "additionalInformation": partner.l10n_eg_additional_information or "",
             },
             "type": "B" if partner.company_type == 'company' and partner.country_id.code == 'EG' else "P" if partner.company_type == 'person' and partner.country_id.code == 'EG' else "F",
-            "id": partner.l10n_eg_code or partner.vat if partner.company_type == 'company' else partner.national_identifier or partner.vat,
+            "id": partner.l10n_eg_code or partner.vat if partner.company_type == 'company' else partner.l10n_eg_national_identifier or partner.vat,
             "name": partner.name,
         }
         return receiver
@@ -403,8 +472,8 @@ class AccountMove(models.Model):
             discount = (line.discount / 100.0) * line.quantity * line.price_unit
             lines.append({
                 "description": line.name,
-                "itemType": line.product_id.item_type if line.product_id.item_type else "GS1",
-                "itemCode": line.product_id.item_code,
+                "itemType": line.product_id.l10n_eg_item_type if line.product_id.l10n_eg_item_type else "GS1",
+                "itemCode": line.product_id.l10n_eg_item_code,
                 "unitType": line.product_uom_id.l10n_eg_unit_code,
                 "quantity": line.quantity,
                 "internalCode": line.product_id.default_code or "",

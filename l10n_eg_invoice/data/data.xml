@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
+    <data noupdate="1">
         <record id="default_eta_domain" model="ir.config_parameter">
             <field name="key">default.eta.production.domain</field>
             <field name="value">https://api.invoicing.eta.gov.eg</field>
@@ -9,6 +9,11 @@
         <record id="default_eta_token_domain" model="ir.config_parameter">
             <field name="key">default.eta.token.production.domain</field>
             <field name="value">https://id.eta.gov.eg</field>
+        </record>
+
+        <record id="default_eta_token_domain" model="ir.config_parameter">
+            <field name="key">default.sign.host</field>
+            <field name="value">http://localhost:5100</field>
         </record>
     </data>
 </odoo>

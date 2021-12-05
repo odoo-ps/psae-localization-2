@@ -80,9 +80,9 @@ class EinvoiceIntegration(http.Controller):
                 signatures = params.get('signatures')
                 signature = signatures[0]
                 invoice_id.write({
-                    'signature_type': str(signature.get('signatureType')),
-                    'signature_value': str(signature.get('value')),
-                    'eta_invoice_signed': True,
+                    'l10n_eg_signature_type': str(signature.get('signatureType')),
+                    'l10n_eg_signature_data': str(signature.get('value')),
+                    'l10n_eg_invoice_signed': True,
                 })
                 data = {'result': 'Success'}
                 return {'data': data}

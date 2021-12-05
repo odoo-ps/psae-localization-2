@@ -26,7 +26,10 @@
         'views/res_partner_view.xml',
         'views/uom_uom_view.xml',
         'views/account_move_view.xml',
-
     ],
-
+    'assets': {
+        'web.assets_backend': [
+            'l10n_eg_invoice/static/src/**/*',
+        ],
+    }
 }
